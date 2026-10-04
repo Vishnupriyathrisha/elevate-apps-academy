@@ -14,128 +14,174 @@ import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import AccessTimeRoundedIcon from "@mui/icons-material/AccessTimeRounded";
 import TrendingUpRoundedIcon from "@mui/icons-material/TrendingUpRounded";
 
+// Course images
+import courseFullstack from "../assets/course-fullstack.jpg";
+import courseFrontend from "../assets/course-frontend.jpg";
+import courseBackend from "../assets/course-backend.png";
+import courseUiux from "../assets/course-uiux.webp";
+
 const Courses = () => {
   const courses = [
     {
       number: "01",
       title: "Full Stack Development",
       description:
-        "Build complete modern web applications from frontend to backend with real-world development practices.",
-      icon: <CodeRoundedIcon />,
+        "Build complete modern web applications from frontend interfaces to powerful backend systems.",
       level: "Advanced",
       duration: "6 Months",
       color: "#059669",
+      icon: <CodeRoundedIcon />,
+      image: courseFullstack,
       technologies: ["React", "Node.js", "MongoDB"],
     },
     {
       number: "02",
       title: "Frontend Development",
       description:
-        "Learn to create responsive, interactive and modern user interfaces using industry-ready technologies.",
-      icon: <WebRoundedIcon />,
+        "Create responsive, interactive and user-friendly web experiences using modern frontend technologies.",
       level: "Intermediate",
       duration: "4 Months",
       color: "#2563EB",
+      icon: <WebRoundedIcon />,
+      image: courseFrontend,
       technologies: ["HTML", "CSS", "React"],
     },
     {
       number: "03",
       title: "Backend Development",
       description:
-        "Master APIs, databases, authentication and server-side development through practical projects.",
-      icon: <StorageRoundedIcon />,
+        "Learn to design APIs, manage databases and build secure scalable server-side applications.",
       level: "Intermediate",
       duration: "4 Months",
       color: "#0F766E",
+      icon: <StorageRoundedIcon />,
+      image: courseBackend,
       technologies: ["Node.js", "Express", "MongoDB"],
     },
     {
       number: "04",
       title: "UI / UX Design",
       description:
-        "Design meaningful digital experiences with user-focused thinking, wireframes and modern design systems.",
-      icon: <DesignServicesRoundedIcon />,
+        "Transform ideas into intuitive digital experiences through research, design systems and prototyping.",
       level: "Beginner",
       duration: "3 Months",
       color: "#7C3AED",
+      icon: <DesignServicesRoundedIcon />,
+      image: courseUiux,
       technologies: ["Figma", "UX", "Prototyping"],
     },
   ];
 
   return (
     <Box
-      id="courses"
+      id="programs"
       sx={{
         position: "relative",
         overflow: "hidden",
-        py: { xs: 10, md: 15 },
+        py: {
+          xs: 9,
+          sm: 11,
+          md: 14,
+        },
         background: `
           radial-gradient(
             circle at 8% 15%,
-            rgba(16,185,129,0.13),
-            transparent 26%
-          ),
-          radial-gradient(
-            circle at 92% 25%,
-            rgba(37,99,235,0.11),
+            rgba(16,185,129,0.14),
             transparent 28%
           ),
           radial-gradient(
-            circle at 75% 90%,
+            circle at 92% 20%,
+            rgba(37,99,235,0.12),
+            transparent 28%
+          ),
+          radial-gradient(
+            circle at 70% 90%,
             rgba(20,184,166,0.10),
             transparent 30%
           ),
           linear-gradient(
             135deg,
-            #e8f7f1 0%,
-            #effbf7 48%,
-            #e9f6ff 100%
+            #effbf7 0%,
+            #f5fffc 48%,
+            #eef8ff 100%
           )
         `,
       }}
     >
-      {/* Background Glow */}
+      {/* Background Glow One */}
       <Box
         sx={{
           position: "absolute",
-          width: 320,
-          height: 320,
+          width: { xs: 180, md: 320 },
+          height: { xs: 180, md: 320 },
           borderRadius: "50%",
-          background: "rgba(5,150,105,0.08)",
-          filter: "blur(80px)",
-          top: 80,
-          left: -140,
-          animation: "courseGlow 7s ease-in-out infinite",
-          "@keyframes courseGlow": {
-            "0%, 100%": {
-              transform: "translate(0, 0)",
-            },
-            "50%": {
-              transform: "translate(70px, 40px)",
-            },
-          },
+          top: { xs: 100, md: 70 },
+          left: { xs: -90, md: -130 },
+          background:
+            "radial-gradient(circle, rgba(5,150,105,0.16), transparent 70%)",
+          filter: "blur(8px)",
+          animation: "courseGlowOne 8s ease-in-out infinite",
+          pointerEvents: "none",
+        }}
+      />
+
+      {/* Background Glow Two */}
+      <Box
+        sx={{
+          position: "absolute",
+          width: { xs: 200, md: 360 },
+          height: { xs: 200, md: 360 },
+          borderRadius: "50%",
+          bottom: { xs: 80, md: 30 },
+          right: { xs: -100, md: -140 },
+          background:
+            "radial-gradient(circle, rgba(37,99,235,0.14), transparent 70%)",
+          filter: "blur(10px)",
+          animation: "courseGlowTwo 9s ease-in-out infinite",
+          pointerEvents: "none",
+        }}
+      />
+
+      {/* Decorative Dots */}
+      <Box
+        sx={{
+          position: "absolute",
+          top: "15%",
+          right: "7%",
+          width: 7,
+          height: 7,
+          borderRadius: "50%",
+          background: "#059669",
+          opacity: 0.35,
+          animation: "courseDotFloat 4s ease-in-out infinite",
         }}
       />
 
       <Box
         sx={{
           position: "absolute",
-          width: 280,
-          height: 280,
+          top: "34%",
+          left: "5%",
+          width: 5,
+          height: 5,
           borderRadius: "50%",
-          background: "rgba(37,99,235,0.07)",
-          filter: "blur(75px)",
-          right: -100,
-          bottom: 60,
-          animation: "courseGlow2 8s ease-in-out infinite",
-          "@keyframes courseGlow2": {
-            "0%, 100%": {
-              transform: "translate(0, 0)",
-            },
-            "50%": {
-              transform: "translate(-50px, -30px)",
-            },
-          },
+          background: "#2563EB",
+          opacity: 0.3,
+          animation: "courseDotFloat 5s ease-in-out infinite 1s",
+        }}
+      />
+
+      <Box
+        sx={{
+          position: "absolute",
+          bottom: "18%",
+          right: "10%",
+          width: 6,
+          height: 6,
+          borderRadius: "50%",
+          background: "#0F766E",
+          opacity: 0.28,
+          animation: "courseDotFloat 6s ease-in-out infinite 0.5s",
         }}
       />
 
@@ -144,54 +190,89 @@ const Courses = () => {
         sx={{
           position: "relative",
           zIndex: 2,
+          px: {
+            xs: 2,
+            sm: 3,
+            md: 5,
+            lg: 7,
+          },
         }}
       >
-        {/* Heading */}
+        {/* =========================
+            SECTION HEADER
+        ========================== */}
         <Box
           sx={{
-            maxWidth: 720,
+            maxWidth: 850,
             mx: "auto",
             textAlign: "center",
-            mb: { xs: 6, md: 9 },
+            mb: {
+              xs: 5,
+              sm: 6,
+              md: 7,
+            },
           }}
         >
           <Chip
+            icon={
+              <TrendingUpRoundedIcon
+                sx={{
+                  fontSize: {
+                    xs: 15,
+                    sm: 17,
+                  },
+                }}
+              />
+            }
             label="EXPLORE YOUR PATH"
             sx={{
-              mb: 2.5,
+              height: {
+                xs: 30,
+                sm: 34,
+              },
               px: 1,
-              height: 30,
+              mb: 2,
               borderRadius: "50px",
-              background: "rgba(5,150,105,0.08)",
-              color: "#059669",
-              border: "1px solid rgba(5,150,105,0.12)",
-              fontSize: 10,
+              background:
+                "rgba(5,150,105,0.08)",
+              border:
+                "1px solid rgba(5,150,105,0.15)",
+              color: "#047857",
+              fontSize: {
+                xs: 9,
+                sm: 10,
+                md: 11,
+              },
               fontWeight: 800,
-              letterSpacing: 2,
+              letterSpacing: 1.2,
+              "& .MuiChip-icon": {
+                color: "#059669",
+              },
             }}
           />
 
           <Typography
             sx={{
               fontSize: {
-                xs: 34,
-                sm: 42,
-                md: 52,
+                xs: 30,
+                sm: 38,
+                md: 48,
+                lg: 56,
               },
               lineHeight: 1.08,
-              fontWeight: 850,
+              fontWeight: 900,
               letterSpacing: "-1.8px",
               color: "#12302B",
+              mb: 2,
             }}
           >
             Learn Today.
-            <br />
-
             <Box
               component="span"
               sx={{
+                display: "block",
                 background:
-                  "linear-gradient(90deg, #059669, #0F766E, #2563EB)",
+                  "linear-gradient(90deg, #059669, #2563EB)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}
@@ -202,20 +283,26 @@ const Courses = () => {
 
           <Typography
             sx={{
-              mt: 2.5,
-              maxWidth: 590,
+              maxWidth: 690,
               mx: "auto",
-              color: "#708780",
-              fontSize: { xs: 13, md: 15 },
+              fontSize: {
+                xs: 13,
+                sm: 14,
+                md: 16,
+              },
               lineHeight: 1.8,
+              color: "#60756F",
             }}
           >
-            Choose a learning path designed to turn your curiosity into
-            practical skills, real projects and career-ready confidence.
+            Choose a learning path designed to help you understand
+            technology, practice with confidence and build skills that
+            move your career forward.
           </Typography>
         </Box>
 
-        {/* Course Cards */}
+        {/* =========================
+            COURSE GRID
+        ========================== */}
         <Box
           sx={{
             display: "grid",
@@ -224,359 +311,576 @@ const Courses = () => {
               sm: "repeat(2, 1fr)",
               lg: "repeat(4, 1fr)",
             },
-            gap: { xs: 2.5, md: 3 },
+            gap: {
+              xs: 2.5,
+              sm: 3,
+              lg: 2.5,
+            },
+            alignItems: "stretch",
           }}
         >
           {courses.map((course, index) => (
             <Box
-              key={course.number}
+              key={course.title}
               sx={{
                 position: "relative",
-                minHeight: { xs: 390, md: 420 },
-                p: { xs: 2.8, md: 3.2 },
-                borderRadius: "26px",
+                minHeight: {
+                  xs: 540,
+                  sm: 545,
+                  lg: 560,
+                },
+                borderRadius: {
+                  xs: "24px",
+                  md: "28px",
+                },
                 overflow: "hidden",
-
-                background: "rgba(255,255,255,0.48)",
-                border: "1px solid rgba(5,150,105,0.10)",
-                backdropFilter: "blur(16px)",
-                WebkitBackdropFilter: "blur(16px)",
-
-                opacity: 0,
-
-                animation: `courseReveal 0.7s ease ${
-                  index * 0.12
-                }s forwards`,
-
+                background:
+                  "rgba(255,255,255,0.78)",
+                border:
+                  "1px solid rgba(15,118,110,0.10)",
+                boxShadow:
+                  "0 18px 50px rgba(20,75,65,0.08)",
+                backdropFilter: "blur(18px)",
+                WebkitBackdropFilter: "blur(18px)",
+                display: "flex",
+                flexDirection: "column",
                 transition:
                   "transform 0.45s cubic-bezier(.2,.8,.2,1), box-shadow 0.45s ease, border-color 0.45s ease",
-
-                "@keyframes courseReveal": {
-                  from: {
-                    opacity: 0,
-                    transform: "translateY(35px) scale(0.96)",
-                  },
-                  to: {
-                    opacity: 1,
-                    transform: "translateY(0) scale(1)",
-                  },
-                },
-
-                "&::before": {
-                  content: '""',
-                  position: "absolute",
-                  top: 0,
-                  left: "-100%",
-                  width: "100%",
-                  height: 2,
-                  background: `linear-gradient(
-                    90deg,
-                    transparent,
-                    ${course.color},
-                    #2563EB,
-                    transparent
-                  )`,
-                  transition: "left 0.7s ease",
-                },
-
-                "&::after": {
-                  content: '""',
-                  position: "absolute",
-                  width: 150,
-                  height: 150,
-                  borderRadius: "50%",
-                  background: `${course.color}10`,
-                  top: -75,
-                  right: -75,
-                  filter: "blur(4px)",
-                  transition: "transform 0.5s ease",
-                  pointerEvents: "none",
-                },
-
+                animation: `courseCardReveal 0.7s ease both`,
+                animationDelay: `${index * 0.1}s`,
                 "&:hover": {
-                  transform: "translateY(-12px)",
-                  boxShadow: `0 25px 55px ${course.color}20`,
-                  borderColor: `${course.color}35`,
-
-                  "&::before": {
-                    left: "100%",
-                  },
-
-                  "&::after": {
-                    transform: "scale(1.8)",
-                  },
-
-                  "& .course-icon": {
-                    transform: "rotate(-7deg) scale(1.12)",
-                    boxShadow: `0 10px 28px ${course.color}25`,
-                  },
-
-                  "& .course-arrow": {
-                    transform: "translateX(5px)",
-                    color: course.color,
-                  },
-
-                  "& .course-title": {
-                    color: course.color,
-                  },
+                  transform:
+                    "translateY(-10px)",
+                  boxShadow:
+                    "0 28px 65px rgba(20,75,65,0.14)",
+                  borderColor:
+                    `${course.color}35`,
+                },
+                "&:hover .course-image": {
+                  transform: "scale(1.08)",
+                },
+                "&:hover .course-image-overlay": {
+                  opacity: 0.12,
+                },
+                "&:hover .course-number": {
+                  transform:
+                    "translateY(-3px)",
+                  color: course.color,
+                },
+                "&:hover .course-icon": {
+                  transform:
+                    "translateY(-4px) rotate(-4deg)",
+                  boxShadow:
+                    `0 14px 28px ${course.color}25`,
+                },
+                "&:hover .course-arrow": {
+                  transform:
+                    "translateX(5px)",
                 },
               }}
             >
-              {/* Number */}
-              <Typography
-                sx={{
-                  position: "absolute",
-                  top: 20,
-                  right: 22,
-                  fontSize: 34,
-                  fontWeight: 850,
-                  color: `${course.color}12`,
-                  lineHeight: 1,
-                }}
-              >
-                {course.number}
-              </Typography>
-
-              {/* Icon */}
-              <Box
-                className="course-icon"
-                sx={{
-                  width: 56,
-                  height: 56,
-                  borderRadius: "17px",
-                  display: "grid",
-                  placeItems: "center",
-                  color: course.color,
-                  background: `linear-gradient(
-                    135deg,
-                    ${course.color}18,
-                    ${course.color}06
-                  )`,
-                  border: `1px solid ${course.color}12`,
-                  transition:
-                    "all 0.45s cubic-bezier(.2,.8,.2,1)",
-                }}
-              >
-                {course.icon}
-              </Box>
-
-              {/* Title */}
-              <Typography
-                className="course-title"
-                sx={{
-                  mt: 3.2,
-                  fontSize: { xs: 19, md: 20 },
-                  fontWeight: 800,
-                  color: "#12302B",
-                  transition: "color 0.3s ease",
-                }}
-              >
-                {course.title}
-              </Typography>
-
-              {/* Description */}
-              <Typography
-                sx={{
-                  mt: 1.3,
-                  color: "#708780",
-                  fontSize: 12.5,
-                  lineHeight: 1.75,
-                }}
-              >
-                {course.description}
-              </Typography>
-
-              {/* Meta */}
+              {/* =========================
+                  COURSE IMAGE
+              ========================== */}
               <Box
                 sx={{
-                  display: "flex",
-                  gap: 1,
-                  mt: 2.4,
-                  flexWrap: "wrap",
+                  position: "relative",
+                  height: {
+                    xs: 145,
+                    sm: 150,
+                    lg: 145,
+                  },
+                  flexShrink: 0,
+                  overflow: "hidden",
                 }}
               >
-                <Chip
-                  icon={
-                    <TrendingUpRoundedIcon
-                      sx={{ fontSize: 15 }}
-                    />
-                  }
-                  label={course.level}
-                  size="small"
+                <Box
+                  className="course-image"
                   sx={{
-                    height: 28,
-                    borderRadius: "8px",
-                    background: `${course.color}0D`,
+                    position: "absolute",
+                    inset: 0,
+                    backgroundImage: `url(${course.image})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    transform: "scale(1)",
+                    transition:
+                      "transform 0.75s cubic-bezier(.2,.8,.2,1)",
+                  }}
+                />
+
+                {/* Image Overlay */}
+                <Box
+                  className="course-image-overlay"
+                  sx={{
+                    position: "absolute",
+                    inset: 0,
+                    background:
+                      "linear-gradient(135deg, rgba(4,78,66,0.50), rgba(37,99,235,0.42))",
+                    opacity: 0,
+                    transition:
+                      "opacity 0.4s ease",
+                  }}
+                />
+
+                {/* Number */}
+                <Box
+                  className="course-number"
+                  sx={{
+                    position: "absolute",
+                    top: 14,
+                    left: 14,
+                    width: 40,
+                    height: 40,
+                    borderRadius: "13px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    background:
+                      "rgba(255,255,255,0.90)",
+                    backdropFilter:
+                      "blur(10px)",
                     color: course.color,
-                    fontSize: 10,
-                    fontWeight: 700,
-
-                    "& .MuiChip-icon": {
-                      color: course.color,
-                    },
+                    fontSize: 12,
+                    fontWeight: 900,
+                    transition:
+                      "transform 0.3s ease, color 0.3s ease",
+                    zIndex: 3,
                   }}
-                />
+                >
+                  {course.number}
+                </Box>
 
-                <Chip
-                  icon={
-                    <AccessTimeRoundedIcon
-                      sx={{ fontSize: 15 }}
-                    />
-                  }
-                  label={course.duration}
-                  size="small"
+                {/* Course Label */}
+                <Box
                   sx={{
-                    height: 28,
-                    borderRadius: "8px",
-                    background: "rgba(18,48,43,0.045)",
-                    color: "#617A73",
-                    fontSize: 10,
-                    fontWeight: 600,
+                    position: "absolute",
+                    right: 14,
+                    bottom: 14,
+                    px: 1.3,
+                    py: 0.65,
+                    borderRadius: "50px",
+                    background:
+                      "rgba(255,255,255,0.92)",
+                    backdropFilter:
+                      "blur(10px)",
+                    zIndex: 3,
                   }}
-                />
-              </Box>
-
-              {/* Technologies */}
-              <Box
-                sx={{
-                  display: "flex",
-                  gap: 0.7,
-                  flexWrap: "wrap",
-                  mt: 2,
-                }}
-              >
-                {course.technologies.map((tech) => (
-                  <Box
-                    key={tech}
+                >
+                  <Typography
                     sx={{
-                      px: 1,
-                      py: 0.45,
-                      borderRadius: "7px",
-                      background: "rgba(18,48,43,0.035)",
-                      color: "#617A73",
-                      fontSize: 9.5,
-                      fontWeight: 600,
+                      fontSize: 9,
+                      fontWeight: 850,
+                      color: course.color,
+                      letterSpacing: 0.7,
                     }}
                   >
-                    {tech}
-                  </Box>
-                ))}
+                    {course.level.toUpperCase()}
+                  </Typography>
+                </Box>
               </Box>
 
-              {/* Bottom CTA */}
+              {/* =========================
+                  COURSE CONTENT
+              ========================== */}
               <Box
                 sx={{
-                  position: "absolute",
-                  left: 26,
-                  right: 26,
-                  bottom: 23,
+                  position: "relative",
+                  flex: 1,
+                  p: {
+                    xs: 2.4,
+                    sm: 2.5,
+                    md: 2.7,
+                  },
                   display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
+                  flexDirection: "column",
                 }}
               >
-                <Button
-                  className="course-view-btn"
-                  endIcon={<ArrowForwardRoundedIcon />}
+                {/* Icon */}
+                <Box
+                  className="course-icon"
                   sx={{
-                    minHeight: 38,
-                    px: 1.8,
-                    borderRadius: "12px",
-                    textTransform: "none",
-                    fontSize: 10.5,
-                    fontWeight: 750,
-                    letterSpacing: 0.3,
-
-                    color: course.color,
-
-                    background: `${course.color}0D`,
-                    border: `1px solid ${course.color}18`,
-
+                    width: 52,
+                    height: 52,
+                    mt: -5.8,
+                    mb: 2,
+                    borderRadius: "17px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: "#ffffff",
+                    background:
+                      `linear-gradient(135deg, ${course.color}, ${course.color}CC)`,
+                    boxShadow:
+                      `0 10px 24px ${course.color}20`,
+                    border:
+                      "4px solid rgba(255,255,255,0.95)",
                     transition:
-                      "all 0.35s cubic-bezier(.2,.8,.2,1)",
+                      "transform 0.35s ease, box-shadow 0.35s ease",
+                    position: "relative",
+                    zIndex: 4,
+                  }}
+                >
+                  {course.icon}
+                </Box>
 
-                    "& .MuiButton-endIcon": {
-                      marginLeft: 0.5,
-                      transition: "transform 0.35s ease",
+                {/* Title */}
+                <Typography
+                  sx={{
+                    fontSize: {
+                      xs: 19,
+                      sm: 20,
+                      lg: 19,
                     },
+                    lineHeight: 1.25,
+                    fontWeight: 850,
+                    color: "#12302B",
+                    mb: 1.3,
+                    minHeight: {
+                      xs: "auto",
+                      lg: 48,
+                    },
+                  }}
+                >
+                  {course.title}
+                </Typography>
 
+                {/* Description */}
+                <Typography
+                  sx={{
+                    fontSize: {
+                      xs: 12.5,
+                      sm: 13,
+                    },
+                    lineHeight: 1.75,
+                    color: "#6B7E79",
+                    mb: 2.2,
+                  }}
+                >
+                  {course.description}
+                </Typography>
+
+                {/* Level + Duration */}
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: 0.8,
+                    mb: 2.2,
+                  }}
+                >
+                  <Chip
+                    label={course.level}
+                    size="small"
+                    sx={{
+                      height: 27,
+                      borderRadius: "50px",
+                      background:
+                        `${course.color}10`,
+                      color: course.color,
+                      border:
+                        `1px solid ${course.color}20`,
+                      fontSize: 10,
+                      fontWeight: 800,
+                    }}
+                  />
+
+                  <Chip
+                    icon={
+                      <AccessTimeRoundedIcon
+                        sx={{
+                          fontSize: 14,
+                        }}
+                      />
+                    }
+                    label={course.duration}
+                    size="small"
+                    sx={{
+                      height: 27,
+                      borderRadius: "50px",
+                      background:
+                        "rgba(18,48,43,0.045)",
+                      color: "#526C65",
+                      fontSize: 10,
+                      fontWeight: 750,
+                      "& .MuiChip-icon": {
+                        color: "#6B7E79",
+                      },
+                    }}
+                  />
+                </Box>
+
+                {/* Technologies Label */}
+                <Typography
+                  sx={{
+                    fontSize: 9,
+                    fontWeight: 850,
+                    letterSpacing: 1,
+                    color: "#8A9A96",
+                    mb: 1,
+                  }}
+                >
+                  TECHNOLOGIES
+                </Typography>
+
+                {/* Technologies */}
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: 0.7,
+                    mb: 3,
+                  }}
+                >
+                  {course.technologies.map(
+                    (technology) => (
+                      <Box
+                        key={technology}
+                        sx={{
+                          px: 1,
+                          py: 0.55,
+                          borderRadius: "8px",
+                          background:
+                            "rgba(18,48,43,0.045)",
+                          color: "#506761",
+                          fontSize: 10,
+                          fontWeight: 700,
+                        }}
+                      >
+                        {technology}
+                      </Box>
+                    )
+                  )}
+                </Box>
+
+                {/* Spacer */}
+                <Box sx={{ flex: 1 }} />
+
+                {/* View Course */}
+                <Button
+                  href="#contact"
+                  fullWidth
+                  variant="outlined"
+                  endIcon={
+                    <ArrowForwardRoundedIcon className="course-arrow" />
+                  }
+                  sx={{
+                    py: 1.15,
+                    borderRadius: "13px",
+                    textTransform: "none",
+                    fontSize: 12,
+                    fontWeight: 800,
+                    color: course.color,
+                    borderColor:
+                      `${course.color}28`,
+                    background:
+                      `${course.color}05`,
+                    transition:
+                      "all 0.3s ease",
+                    "& .course-arrow": {
+                      fontSize: 17,
+                      transition:
+                        "transform 0.3s ease",
+                    },
                     "&:hover": {
                       color: "#ffffff",
-                      background: course.color,
-                      borderColor: course.color,
-                      boxShadow: `0 8px 20px ${course.color}25`,
-                      transform: "translateY(-2px)",
-
-                      "& .MuiButton-endIcon": {
-                        transform: "translateX(4px)",
-                      },
+                      borderColor:
+                        course.color,
+                      background:
+                        course.color,
+                      boxShadow:
+                        `0 10px 22px ${course.color}22`,
                     },
                   }}
                 >
                   View Course
                 </Button>
-
-                <Box
-                  sx={{
-                    width: 7,
-                    height: 7,
-                    borderRadius: "50%",
-                    background: course.color,
-                    opacity: 0.35,
-                    animation: "courseDot 2s ease-in-out infinite",
-
-                    "@keyframes courseDot": {
-                      "0%, 100%": {
-                        transform: "scale(1)",
-                        opacity: 0.3,
-                      },
-                      "50%": {
-                        transform: "scale(1.5)",
-                        opacity: 0.7,
-                      },
-                    },
-                  }}
-                />
               </Box>
+
+              {/* Decorative Dot */}
+              <Box
+                sx={{
+                  position: "absolute",
+                  width: 6,
+                  height: 6,
+                  borderRadius: "50%",
+                  right: 18,
+                  top: 185,
+                  background: course.color,
+                  opacity: 0.35,
+                  animation:
+                    "courseTinyFloat 3.5s ease-in-out infinite",
+                  animationDelay:
+                    `${index * 0.4}s`,
+                }}
+              />
             </Box>
           ))}
         </Box>
 
-        {/* Bottom Message */}
+        {/* =========================
+            BOTTOM CTA
+        ========================== */}
         <Box
           sx={{
-            mt: { xs: 7, md: 9 },
-            textAlign: "center",
+            mt: {
+              xs: 5,
+              md: 7,
+            },
+            p: {
+              xs: 2.5,
+              sm: 3,
+              md: 3.5,
+            },
+            borderRadius: {
+              xs: "22px",
+              md: "28px",
+            },
+            display: "flex",
+            flexDirection: {
+              xs: "column",
+              md: "row",
+            },
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: 2.5,
+            background:
+              "linear-gradient(135deg, rgba(255,255,255,0.86), rgba(236,251,246,0.78))",
+            border:
+              "1px solid rgba(5,150,105,0.10)",
+            boxShadow:
+              "0 18px 45px rgba(20,75,65,0.06)",
+            backdropFilter: "blur(16px)",
           }}
         >
-          <Typography
+          <Box
             sx={{
-              color: "#78908A",
-              fontSize: 12,
-            }}
-          >
-            Not sure where to start?
-          </Typography>
-
-          <Button
-            href="#contact"
-            endIcon={<ArrowForwardRoundedIcon />}
-            sx={{
-              mt: 1,
-              textTransform: "none",
-              color: "#059669",
-              fontWeight: 750,
-              fontSize: 13,
-
-              "&:hover": {
-                background: "rgba(5,150,105,0.05)",
+              textAlign: {
+                xs: "center",
+                md: "left",
               },
             }}
           >
-            Talk to our learning team
+            <Typography
+              sx={{
+                fontSize: {
+                  xs: 16,
+                  sm: 18,
+                  md: 20,
+                },
+                fontWeight: 850,
+                color: "#12302B",
+                mb: 0.5,
+              }}
+            >
+              Not sure where to start?
+            </Typography>
+
+            <Typography
+              sx={{
+                fontSize: {
+                  xs: 12,
+                  sm: 13,
+                },
+                color: "#6B7E79",
+              }}
+            >
+              Talk to our learning team and find the right path for you.
+            </Typography>
+          </Box>
+
+          <Button
+            href="#contact"
+            variant="contained"
+            endIcon={<ArrowForwardRoundedIcon />}
+            sx={{
+              flexShrink: 0,
+              px: {
+                xs: 2.2,
+                sm: 2.8,
+              },
+              py: 1.2,
+              borderRadius: "50px",
+              textTransform: "none",
+              fontSize: 12,
+              fontWeight: 850,
+              background:
+                "linear-gradient(135deg, #059669, #0F766E)",
+              boxShadow:
+                "0 12px 25px rgba(5,150,105,0.16)",
+              "&:hover": {
+                background:
+                  "linear-gradient(135deg, #047857, #2563EB)",
+                transform:
+                  "translateY(-2px)",
+                boxShadow:
+                  "0 15px 30px rgba(5,150,105,0.22)",
+              },
+            }}
+          >
+            Talk to Us
           </Button>
         </Box>
       </Container>
+
+      {/* =========================
+          ANIMATIONS
+      ========================== */}
+      <style>
+        {`
+          @keyframes courseGlowOne {
+            0%, 100% {
+              transform: translate(0, 0) scale(1);
+              opacity: 0.7;
+            }
+            50% {
+              transform: translate(30px, 20px) scale(1.08);
+              opacity: 1;
+            }
+          }
+
+          @keyframes courseGlowTwo {
+            0%, 100% {
+              transform: translate(0, 0) scale(1);
+              opacity: 0.65;
+            }
+            50% {
+              transform: translate(-25px, -25px) scale(1.1);
+              opacity: 1;
+            }
+          }
+
+          @keyframes courseDotFloat {
+            0%, 100% {
+              transform: translateY(0);
+            }
+            50% {
+              transform: translateY(-12px);
+            }
+          }
+
+          @keyframes courseTinyFloat {
+            0%, 100% {
+              transform: translateY(0);
+              opacity: 0.25;
+            }
+            50% {
+              transform: translateY(-8px);
+              opacity: 0.55;
+            }
+          }
+
+          @keyframes courseCardReveal {
+            from {
+              opacity: 0;
+              transform: translateY(25px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+        `}
+      </style>
     </Box>
   );
 };

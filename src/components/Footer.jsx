@@ -37,7 +37,7 @@ const Footer = () => {
     {
       label: "Courses",
       icon: <MenuBookOutlinedIcon />,
-      href: "#courses",
+      href: "#programs",
     },
     {
       label: "Why Us",

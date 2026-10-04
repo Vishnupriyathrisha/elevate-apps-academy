@@ -6,10 +6,12 @@ import Hero from "./components/Hero";
 import About from "./components/About";
 import Courses from "./components/Courses";
 import WhyUs from "./components/WhyUs";
+import Learning from "./components/Learning";
+import Network from "./components/Network";
+import Events from "./components/Events";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
-<components></components>
 function App() {
   return (
     <div className="app">
@@ -20,13 +22,15 @@ function App() {
       <main>
         <Hero />
         <About />
-        <Courses/>
+        <Courses />
         <WhyUs />
+        <Learning />
+        <Network />
+        <Events />
         <Contact />
       </main>
 
-       <Footer />
-       
+      <Footer />
     </div>
   );
 }

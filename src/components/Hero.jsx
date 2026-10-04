@@ -2,15 +2,21 @@ import {
   Box,
   Container,
   Typography,
-  Chip,
   Button,
+  Chip,
 } from "@mui/material";
 
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import PlayArrowRoundedIcon from "@mui/icons-material/PlayArrowRounded";
-import RocketLaunchRoundedIcon from "@mui/icons-material/RocketLaunchRounded";
-import TerminalRoundedIcon from "@mui/icons-material/TerminalRounded";
 import CodeRoundedIcon from "@mui/icons-material/CodeRounded";
+import GroupsRoundedIcon from "@mui/icons-material/GroupsRounded";
+import AutoAwesomeRoundedIcon from "@mui/icons-material/AutoAwesomeRounded";
+import SchoolRoundedIcon from "@mui/icons-material/SchoolRounded";
+import LaptopMacRoundedIcon from "@mui/icons-material/LaptopMacRounded";
+import RocketLaunchRoundedIcon from "@mui/icons-material/RocketLaunchRounded";
+import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
+import TrendingUpRoundedIcon from "@mui/icons-material/TrendingUpRounded";
+import PlayCircleOutlineRoundedIcon from "@mui/icons-material/PlayCircleOutlineRounded";
 
 const Hero = () => {
   return (
@@ -18,60 +24,78 @@ const Hero = () => {
       id="home"
       sx={{
         position: "relative",
-        minHeight: "100vh",
+        minHeight: {
+          xs: "auto",
+          md: "100vh",
+        },
         overflow: "hidden",
         display: "flex",
         alignItems: "center",
-        pt: { xs: 11, md: 13 },
-        pb: { xs: 7, md: 9 },
+        pt: {
+          xs: 11,
+          sm: 12,
+          md: 13,
+          lg: 14,
+        },
+        pb: {
+          xs: 7,
+          sm: 8,
+          md: 7,
+        },
 
         background: `
           radial-gradient(
-            circle at 8% 15%,
-            rgba(16,185,129,0.18),
-            transparent 26%
+            circle at 5% 10%,
+            rgba(5,150,105,0.16),
+            transparent 25%
           ),
           radial-gradient(
-            circle at 88% 18%,
-            rgba(37,99,235,0.13),
+            circle at 90% 15%,
+            rgba(37,99,235,0.12),
             transparent 28%
           ),
           radial-gradient(
-            circle at 78% 88%,
-            rgba(20,184,166,0.14),
+            circle at 80% 90%,
+            rgba(20,184,166,0.12),
             transparent 30%
           ),
           linear-gradient(
             135deg,
             #e8f7f1 0%,
-            #effbf7 45%,
-            #e9f6ff 100%
+            #f2fbf8 48%,
+            #eaf6ff 100%
           )
         `,
       }}
     >
-      {/* =========================================
-          BACKGROUND GLOW
-      ========================================= */}
+      {/* =====================================================
+          BACKGROUND DECORATION
+      ===================================================== */}
 
       <Box
         sx={{
           position: "absolute",
-          width: 430,
-          height: 430,
+          width: {
+            xs: 240,
+            md: 480,
+          },
+          height: {
+            xs: 240,
+            md: 480,
+          },
           borderRadius: "50%",
           background: "rgba(5,150,105,0.07)",
           filter: "blur(90px)",
-          top: -150,
-          left: -130,
-          animation: "heroGlowOne 8s ease-in-out infinite",
+          top: -170,
+          left: -150,
+          animation: "heroGlow1 9s ease-in-out infinite",
 
-          "@keyframes heroGlowOne": {
-            "0%, 100%": {
-              transform: "translate(0, 0) scale(1)",
+          "@keyframes heroGlow1": {
+            "0%,100%": {
+              transform: "translate(0,0) scale(1)",
             },
             "50%": {
-              transform: "translate(70px, 50px) scale(1.08)",
+              transform: "translate(70px,60px) scale(1.08)",
             },
           },
         }}
@@ -80,70 +104,77 @@ const Hero = () => {
       <Box
         sx={{
           position: "absolute",
-          width: 390,
-          height: 390,
+          width: {
+            xs: 220,
+            md: 430,
+          },
+          height: {
+            xs: 220,
+            md: 430,
+          },
           borderRadius: "50%",
-          background: "rgba(37,99,235,0.06)",
-          filter: "blur(90px)",
-          right: -130,
-          bottom: -100,
-          animation: "heroGlowTwo 9s ease-in-out infinite",
+          background: "rgba(37,99,235,0.07)",
+          filter: "blur(95px)",
+          right: -150,
+          bottom: -130,
+          animation: "heroGlow2 10s ease-in-out infinite",
 
-          "@keyframes heroGlowTwo": {
-            "0%, 100%": {
-              transform: "translate(0, 0) scale(1)",
+          "@keyframes heroGlow2": {
+            "0%,100%": {
+              transform: "translate(0,0) scale(1)",
             },
             "50%": {
-              transform: "translate(-60px, -40px) scale(1.08)",
+              transform: "translate(-60px,-50px) scale(1.1)",
             },
           },
         }}
       />
 
-      {/* Floating dots */}
+      {/* Decorative Grid */}
 
       <Box
         sx={{
           position: "absolute",
-          width: 14,
-          height: 14,
+          inset: 0,
+          opacity: 0.35,
+          backgroundImage: `
+            linear-gradient(
+              rgba(5,150,105,0.035) 1px,
+              transparent 1px
+            ),
+            linear-gradient(
+              90deg,
+              rgba(5,150,105,0.035) 1px,
+              transparent 1px
+            )
+          `,
+          backgroundSize: "42px 42px",
+          maskImage:
+            "linear-gradient(to bottom, black, transparent 85%)",
+          pointerEvents: "none",
+        }}
+      />
+
+      {/* Floating circles */}
+
+      <Box
+        sx={{
+          position: "absolute",
+          width: 12,
+          height: 12,
           borderRadius: "50%",
           background: "#059669",
-          top: "18%",
-          right: "28%",
-          boxShadow: "0 0 20px rgba(5,150,105,0.25)",
-          animation: "heroDot 3s ease-in-out infinite",
+          top: "23%",
+          left: "7%",
+          boxShadow: "0 0 0 7px rgba(5,150,105,0.06)",
+          animation: "floatDot1 4s ease-in-out infinite",
 
-          "@keyframes heroDot": {
-            "0%, 100%": {
+          "@keyframes floatDot1": {
+            "0%,100%": {
               transform: "translateY(0)",
             },
             "50%": {
-              transform: "translateY(-12px)",
-            },
-          },
-        }}
-      />
-
-      <Box
-        sx={{
-          position: "absolute",
-          width: 11,
-          height: 11,
-          borderRadius: "50%",
-          background: "#2563EB",
-          bottom: "20%",
-          left: "20%",
-          animation: "heroDotTwo 4s ease-in-out infinite",
-
-          "@keyframes heroDotTwo": {
-            "0%, 100%": {
-              transform: "translateY(0)",
-              opacity: 0.7,
-            },
-            "50%": {
-              transform: "translateY(-15px)",
-              opacity: 1,
+              transform: "translateY(-14px)",
             },
           },
         }}
@@ -155,17 +186,41 @@ const Hero = () => {
           width: 9,
           height: 9,
           borderRadius: "50%",
-          background: "#8BB7FF",
-          top: "30%",
-          right: "9%",
-          animation: "heroDotThree 5s ease-in-out infinite",
+          background: "#2563EB",
+          top: "28%",
+          right: "7%",
+          animation: "floatDot2 5s ease-in-out infinite",
 
-          "@keyframes heroDotThree": {
-            "0%, 100%": {
+          "@keyframes floatDot2": {
+            "0%,100%": {
               transform: "scale(1)",
+              opacity: 0.6,
             },
             "50%": {
               transform: "scale(1.5)",
+              opacity: 1,
+            },
+          },
+        }}
+      />
+
+      <Box
+        sx={{
+          position: "absolute",
+          width: 7,
+          height: 7,
+          borderRadius: "50%",
+          background: "#14B8A6",
+          bottom: "20%",
+          left: "43%",
+          animation: "floatDot3 4.5s ease-in-out infinite",
+
+          "@keyframes floatDot3": {
+            "0%,100%": {
+              transform: "translateY(0)",
+            },
+            "50%": {
+              transform: "translateY(-10px)",
             },
           },
         }}
@@ -175,7 +230,7 @@ const Hero = () => {
         maxWidth="xl"
         sx={{
           position: "relative",
-          zIndex: 3,
+          zIndex: 2,
         }}
       >
         <Box
@@ -183,23 +238,28 @@ const Hero = () => {
             display: "grid",
             gridTemplateColumns: {
               xs: "1fr",
-              lg: "0.95fr 1.05fr",
+              lg: "1.02fr 0.98fr",
             },
             alignItems: "center",
-            gap: { xs: 5, lg: 4 },
+            gap: {
+              xs: 6,
+              md: 7,
+              lg: 4,
+            },
           }}
         >
-          {/* =========================================
+          {/* =====================================================
               LEFT CONTENT
-          ========================================= */}
+          ===================================================== */}
 
           <Box
             sx={{
-              maxWidth: 650,
-              animation: "heroTextReveal 0.9s ease forwards",
+              maxWidth: 690,
+              animation:
+                "heroContentReveal 0.9s cubic-bezier(.2,.8,.2,1) forwards",
               opacity: 0,
 
-              "@keyframes heroTextReveal": {
+              "@keyframes heroContentReveal": {
                 from: {
                   opacity: 0,
                   transform: "translateY(35px)",
@@ -211,7 +271,7 @@ const Hero = () => {
               },
             }}
           >
-            {/* Small Label */}
+            {/* TOP BADGE */}
 
             <Box
               sx={{
@@ -220,127 +280,231 @@ const Hero = () => {
                 gap: 1,
                 px: 1.5,
                 py: 0.8,
+                mb: {
+                  xs: 2.3,
+                  md: 3,
+                },
                 borderRadius: "50px",
-                background: "rgba(5,150,105,0.07)",
+                background: "rgba(255,255,255,0.62)",
                 border: "1px solid rgba(5,150,105,0.12)",
-                mb: 3,
+                backdropFilter: "blur(12px)",
+                boxShadow:
+                  "0 8px 25px rgba(15,118,110,0.06)",
               }}
             >
-              <Box
+              <AutoAwesomeRoundedIcon
                 sx={{
-                  width: 7,
-                  height: 7,
-                  borderRadius: "50%",
-                  background: "#059669",
-                  boxShadow:
-                    "0 0 0 5px rgba(5,150,105,0.08)",
+                  fontSize: 15,
+                  color: "#059669",
+                  animation:
+                    "badgeSpark 2s ease-in-out infinite",
+
+                  "@keyframes badgeSpark": {
+                    "0%,100%": {
+                      transform: "rotate(0deg) scale(1)",
+                    },
+                    "50%": {
+                      transform:
+                        "rotate(15deg) scale(1.12)",
+                    },
+                  },
                 }}
               />
 
               <Typography
                 sx={{
-                  fontSize: 10,
+                  fontSize: {
+                    xs: 8,
+                    sm: 9,
+                    md: 10,
+                  },
                   fontWeight: 800,
-                  letterSpacing: 1.8,
+                  letterSpacing: {
+                    xs: 1.2,
+                    md: 1.8,
+                  },
                   color: "#059669",
                 }}
               >
-                ELEVATE YOUR POTENTIAL
+                FUTURE-READY LEARNING
               </Typography>
             </Box>
 
-            {/* Main Heading */}
+            {/* MAIN HEADING */}
 
             <Typography
               component="h1"
               sx={{
                 fontSize: {
                   xs: 40,
-                  sm: 54,
-                  md: 66,
+                  sm: 52,
+                  md: 65,
                   lg: 76,
                 },
-                lineHeight: 1.02,
-                letterSpacing: "-3px",
+                lineHeight: {
+                  xs: 1.06,
+                  md: 1.02,
+                },
+                letterSpacing: {
+                  xs: "-1.8px",
+                  md: "-3px",
+                },
                 fontWeight: 850,
                 color: "#12302B",
               }}
             >
-              Learn.
+              Learn skills.
               <br />
 
               <Box
                 component="span"
                 sx={{
                   background:
-                    "linear-gradient(90deg, #059669, #0F766E, #2563EB)",
+                    "linear-gradient(90deg,#059669,#0F766E,#2563EB)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                 }}
               >
-                Build.
-              </Box>{" "}
-              Elevate.
+                Build the future.
+              </Box>
             </Typography>
 
-            {/* Description */}
+            {/* DESCRIPTION */}
 
             <Typography
               sx={{
-                mt: 3,
-                maxWidth: 560,
+                mt: {
+                  xs: 2.5,
+                  md: 3,
+                },
+                maxWidth: 590,
                 fontSize: {
                   xs: 13,
+                  sm: 14,
                   md: 16,
                 },
                 lineHeight: 1.8,
                 color: "#657D76",
               }}
             >
-              Turn your curiosity into real-world technology skills.
-              Learn industry-ready tools, build meaningful projects
-              and take your next step with confidence.
+              Elevate App Academy helps students turn curiosity
+              into practical technology skills through structured
+              learning, hands-on projects, expert mentorship and
+              industry-focused training.
             </Typography>
 
-            {/* Buttons */}
+            {/* FEATURE MINI ROW */}
 
             <Box
               sx={{
                 display: "flex",
-                alignItems: "center",
-                gap: 1.5,
-                mt: 4,
                 flexWrap: "wrap",
+                gap: {
+                  xs: 1,
+                  sm: 1.3,
+                },
+                mt: 2.5,
+              }}
+            >
+              {[
+                {
+                  icon: <CodeRoundedIcon />,
+                  text: "Practical Coding",
+                },
+                {
+                  icon: <GroupsRoundedIcon />,
+                  text: "Expert Mentorship",
+                },
+                {
+                  icon: <RocketLaunchRoundedIcon />,
+                  text: "Real Projects",
+                },
+              ].map((item) => (
+                <Box
+                  key={item.text}
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 0.6,
+                    px: 1.1,
+                    py: 0.65,
+                    borderRadius: "9px",
+                    background:
+                      "rgba(255,255,255,0.45)",
+                    border:
+                      "1px solid rgba(5,150,105,0.07)",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      display: "flex",
+                      color: "#059669",
+
+                      "& svg": {
+                        fontSize: 14,
+                      },
+                    }}
+                  >
+                    {item.icon}
+                  </Box>
+
+                  <Typography
+                    sx={{
+                      fontSize: {
+                        xs: 8,
+                        sm: 9,
+                      },
+                      fontWeight: 700,
+                      color: "#557069",
+                    }}
+                  >
+                    {item.text}
+                  </Typography>
+                </Box>
+              ))}
+            </Box>
+
+            {/* BUTTONS */}
+
+            <Box
+              sx={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: 1.5,
+                mt: 3.5,
               }}
             >
               <Button
-                href="#courses"
+                href="#programs"
                 variant="contained"
                 endIcon={<ArrowForwardRoundedIcon />}
                 sx={{
-                  px: 2.8,
+                  px: {
+                    xs: 2.2,
+                    sm: 2.8,
+                  },
                   py: 1.35,
-                  borderRadius: "14px",
+                  borderRadius: "13px",
                   textTransform: "none",
-                  fontSize: 12,
-                  fontWeight: 750,
+                  fontSize: 11,
+                  fontWeight: 800,
                   color: "#fff",
                   background:
-                    "linear-gradient(135deg, #059669, #0F766E)",
+                    "linear-gradient(135deg,#059669,#0F766E)",
                   boxShadow:
                     "0 12px 28px rgba(5,150,105,0.18)",
-                  transition: "all 0.35s ease",
+                  transition: "all .3s ease",
 
                   "&:hover": {
                     background:
-                      "linear-gradient(135deg, #047857, #2563EB)",
+                      "linear-gradient(135deg,#047857,#2563EB)",
                     transform: "translateY(-3px)",
                     boxShadow:
-                      "0 16px 32px rgba(5,150,105,0.22)",
+                      "0 17px 35px rgba(5,150,105,0.22)",
                   },
 
                   "& .MuiButton-endIcon": {
-                    transition: "transform 0.3s ease",
+                    transition: "transform .3s ease",
                   },
 
                   "&:hover .MuiButton-endIcon": {
@@ -348,140 +512,132 @@ const Hero = () => {
                   },
                 }}
               >
-                Explore Courses
+                Explore Programs
               </Button>
 
               <Button
                 href="#about"
                 startIcon={<PlayArrowRoundedIcon />}
                 sx={{
-                  px: 2.2,
+                  px: {
+                    xs: 2,
+                    sm: 2.4,
+                  },
                   py: 1.25,
-                  borderRadius: "14px",
+                  borderRadius: "13px",
                   textTransform: "none",
-                  fontSize: 12,
-                  fontWeight: 700,
+                  fontSize: 11,
+                  fontWeight: 750,
                   color: "#0F766E",
-                  background: "rgba(255,255,255,0.45)",
+                  background:
+                    "rgba(255,255,255,0.55)",
                   border:
                     "1px solid rgba(5,150,105,0.12)",
                   backdropFilter: "blur(10px)",
+                  transition: "all .3s ease",
 
                   "&:hover": {
                     background:
-                      "rgba(255,255,255,0.7)",
+                      "rgba(255,255,255,0.82)",
                     transform: "translateY(-2px)",
                   },
                 }}
               >
-                Discover More
+                Discover Elevate
               </Button>
             </Box>
 
-            {/* Trust Row */}
+            {/* TRUST MESSAGE */}
 
             <Box
               sx={{
                 display: "flex",
                 alignItems: "center",
-                gap: { xs: 2, sm: 3 },
-                mt: 4.5,
-                flexWrap: "wrap",
+                gap: 0.7,
+                mt: 2.8,
               }}
             >
-              {[
-                ["01", "Learn"],
-                ["02", "Practice"],
-                ["03", "Build"],
-              ].map(([number, label]) => (
-                <Box
-                  key={number}
-                  sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 1,
-                  }}
-                >
-                  <Typography
-                    sx={{
-                      fontSize: 10,
-                      fontWeight: 800,
-                      color: "#059669",
-                    }}
-                  >
-                    {number}
-                  </Typography>
+              <CheckCircleRoundedIcon
+                sx={{
+                  fontSize: 16,
+                  color: "#059669",
+                }}
+              />
 
-                  <Typography
-                    sx={{
-                      fontSize: 11,
-                      fontWeight: 650,
-                      color: "#708780",
-                    }}
-                  >
-                    {label}
-                  </Typography>
-                </Box>
-              ))}
+              <Typography
+                sx={{
+                  fontSize: {
+                    xs: 8,
+                    sm: 9,
+                  },
+                  fontWeight: 650,
+                  color: "#708780",
+                }}
+              >
+                Learn today. Build tomorrow. Elevate your career.
+              </Typography>
             </Box>
           </Box>
 
-          {/* =========================================
-              RIGHT — MONITOR AREA
-          ========================================= */}
+          {/* =====================================================
+              RIGHT VISUAL
+          ===================================================== */}
 
           <Box
             sx={{
               position: "relative",
-
               minHeight: {
-                xs: 390,
-                sm: 480,
-                md: 520,
+                xs: 410,
+                sm: 500,
+                md: 550,
+                lg: 590,
               },
-
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
 
               animation:
-                "monitorEntrance 1s cubic-bezier(.2,.8,.2,1) 0.15s forwards",
+                "heroVisualReveal 1s cubic-bezier(.2,.8,.2,1) .15s forwards",
               opacity: 0,
 
-              "@keyframes monitorEntrance": {
+              "@keyframes heroVisualReveal": {
                 from: {
                   opacity: 0,
-                  transform: "translateY(40px) scale(0.94)",
+                  transform:
+                    "translateY(35px) scale(.95)",
                 },
                 to: {
                   opacity: 1,
-                  transform: "translateY(0) scale(1)",
+                  transform:
+                    "translateY(0) scale(1)",
                 },
               },
             }}
           >
-            {/* Orbit */}
+            {/* BIG ORBIT */}
 
             <Box
               sx={{
                 position: "absolute",
                 width: {
-                  xs: 285,
-                  sm: 410,
-                  md: 470,
+                  xs: 300,
+                  sm: 420,
+                  md: 500,
+                  lg: 540,
                 },
                 height: {
-                  xs: 285,
-                  sm: 410,
-                  md: 470,
+                  xs: 300,
+                  sm: 420,
+                  md: 500,
+                  lg: 540,
                 },
                 borderRadius: "50%",
                 border:
-                  "1px solid rgba(5,150,105,0.10)",
+                  "1px solid rgba(5,150,105,0.11)",
                 animation:
-                  "orbitRotate 18s linear infinite",
+                  "heroOrbit 22s linear infinite",
 
-                "@keyframes orbitRotate": {
+                "@keyframes heroOrbit": {
                   from: {
                     transform: "rotate(0deg)",
                   },
@@ -496,529 +652,210 @@ const Hero = () => {
               sx={{
                 position: "absolute",
                 width: {
-                  xs: 235,
+                  xs: 230,
                   sm: 330,
                   md: 390,
                 },
                 height: {
-                  xs: 235,
+                  xs: 230,
                   sm: 330,
                   md: 390,
                 },
                 borderRadius: "50%",
                 border:
-                  "1px dashed rgba(37,99,235,0.10)",
-                transform: "rotate(-25deg)",
+                  "1px dashed rgba(37,99,235,0.12)",
+                transform: "rotate(-20deg)",
               }}
             />
 
-            {/* Master Floating Card */}
-
-            <Box
-              sx={{
-                position: "absolute",
-                zIndex: 8,
-
-                top: {
-                  xs: 8,
-                  sm: 28,
-                  md: 32,
-                },
-
-                left: {
-                  xs: 0,
-                  sm: 0,
-                  md: -5,
-                },
-
-                display: "flex",
-                alignItems: "center",
-                gap: 0.8,
-
-                px: 1.5,
-                py: 1,
-                borderRadius: "15px",
-
-                background:
-                  "rgba(255,255,255,0.82)",
-                border:
-                  "1px solid rgba(255,255,255,0.9)",
-                backdropFilter: "blur(14px)",
-
-                boxShadow:
-                  "0 14px 30px rgba(15,118,110,0.10)",
-
-                animation:
-                  "masterFloat 4s ease-in-out infinite",
-
-                "@keyframes masterFloat": {
-                  "0%, 100%": {
-                    transform: "translateY(0)",
-                  },
-                  "50%": {
-                    transform: "translateY(-7px)",
-                  },
-                },
-              }}
-            >
-              <CodeRoundedIcon
-                sx={{
-                  color: "#059669",
-                  fontSize: 19,
-                }}
-              />
-
-              <Box>
-                <Typography
-                  sx={{
-                    fontSize: 8,
-                    fontWeight: 700,
-                    color: "#8AA09A",
-                    letterSpacing: 0.5,
-                  }}
-                >
-                  MASTER
-                </Typography>
-
-                <Typography
-                  sx={{
-                    fontSize: 11,
-                    fontWeight: 800,
-                    color: "#12302B",
-                  }}
-                >
-                  Full Stack
-                </Typography>
-              </Box>
-            </Box>
-
-            {/* =========================================
-                MONITOR
-            ========================================= */}
+            {/* CENTRAL LEARNING CARD */}
 
             <Box
               sx={{
                 position: "relative",
                 zIndex: 5,
-
                 width: {
-                  xs: "92%",
-                  sm: 440,
-                  md: 500,
-                  lg: 530,
+                  xs: "88%",
+                  sm: 420,
+                  md: 470,
+                  lg: 500,
                 },
-
-                mt: {
+                borderRadius: {
+                  xs: "23px",
+                  sm: "28px",
+                },
+                p: {
                   xs: 1,
-                  md: 0,
+                  sm: 1.2,
+                },
+                background:
+                  "linear-gradient(145deg,#123E36,#0A2E29)",
+                boxShadow: `
+                  0 35px 70px rgba(15,118,110,0.20),
+                  0 10px 25px rgba(18,48,43,0.12)
+                `,
+                transform:
+                  "perspective(1200px) rotateY(-4deg) rotateX(2deg)",
+                transition:
+                  "transform .5s ease, box-shadow .5s ease",
+
+                "&:hover": {
+                  transform:
+                    "perspective(1200px) rotateY(0deg) rotateX(0deg) translateY(-6px)",
+                  boxShadow:
+                    "0 42px 82px rgba(15,118,110,0.25)",
                 },
               }}
             >
-              {/* Monitor Outer Frame */}
+              {/* TOP BAR */}
+
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  px: {
+                    xs: 1,
+                    sm: 1.4,
+                  },
+                  py: 0.8,
+                }}
+              >
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 0.7,
+                  }}
+                >
+                  {[1, 2, 3].map((item) => (
+                    <Box
+                      key={item}
+                      sx={{
+                        width: 6,
+                        height: 6,
+                        borderRadius: "50%",
+                        background:
+                          item === 1
+                            ? "#34D399"
+                            : item === 2
+                            ? "#FBBF24"
+                            : "#F87171",
+                      }}
+                    />
+                  ))}
+                </Box>
+
+                <Typography
+                  sx={{
+                    fontSize: {
+                      xs: 7,
+                      sm: 8,
+                    },
+                    color:
+                      "rgba(255,255,255,.5)",
+                    letterSpacing: 1,
+                    fontWeight: 700,
+                  }}
+                >
+                  ELEVATE LEARNING LAB
+                </Typography>
+              </Box>
+
+              {/* INNER SCREEN */}
 
               <Box
                 sx={{
                   position: "relative",
-                  width: "100%",
-
-                  aspectRatio: {
-                    xs: "15 / 10",
-                    sm: "16 / 9",
-                  },
-
+                  overflow: "hidden",
                   borderRadius: {
                     xs: "18px",
-                    sm: "23px",
-                    md: "27px",
+                    sm: "22px",
                   },
-
-                  p: {
-                    xs: "4px",
-                    sm: "7px",
-                    md: "8px",
-                  },
-
                   background:
-                    "linear-gradient(145deg, #163F38, #082D28 70%, #051F1B)",
-
-                  boxShadow: `
-                    0 30px 60px rgba(15,118,110,0.18),
-                    0 10px 22px rgba(18,48,43,0.10),
-                    inset 0 1px 0 rgba(255,255,255,0.15)
-                  `,
-
-                  transform:
-                    "perspective(1200px) rotateY(-3deg) rotateX(2deg)",
-
-                  transition:
-                    "transform 0.5s ease, box-shadow 0.5s ease",
-
-                  "&:hover": {
-                    transform:
-                      "perspective(1200px) rotateY(0deg) rotateX(0deg) translateY(-5px)",
-                    boxShadow:
-                      "0 38px 72px rgba(15,118,110,0.22)",
+                    "linear-gradient(145deg,#F6FCFA,#E8F7F2)",
+                  p: {
+                    xs: 1.5,
+                    sm: 2.2,
                   },
                 }}
               >
-                {/* Camera */}
+                {/* Screen glow */}
 
                 <Box
                   sx={{
                     position: "absolute",
-                    top: 3,
-                    left: "50%",
-                    transform: "translateX(-50%)",
-                    width: 4,
-                    height: 4,
+                    width: 160,
+                    height: 160,
                     borderRadius: "50%",
-                    background: "#071F1B",
-                    zIndex: 10,
+                    background:
+                      "rgba(5,150,105,0.10)",
+                    filter: "blur(50px)",
+                    right: -50,
+                    top: -50,
                   }}
                 />
 
-                {/* Screen */}
+                {/* HEADER */}
 
                 <Box
                   sx={{
                     position: "relative",
-                    width: "100%",
-                    height: "100%",
-
-                    borderRadius: {
-                      xs: "13px",
-                      sm: "17px",
-                      md: "20px",
-                    },
-
-                    overflow: "hidden",
-
-                    background:
-                      "linear-gradient(145deg, #F5FCF9, #EAF8F3 55%, #E5F4FA)",
-
-                    border:
-                      "1px solid rgba(255,255,255,0.4)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent:
+                      "space-between",
                   }}
                 >
-                  {/* Screen Reflection */}
-
                   <Box
                     sx={{
-                      position: "absolute",
-                      top: 0,
-                      right: 0,
-                      width: "55%",
-                      height: "100%",
-
-                      background:
-                        "linear-gradient(115deg, transparent 25%, rgba(255,255,255,0.28), transparent 65%)",
-
-                      transform: "translateX(100%)",
-
-                      animation:
-                        "screenShine 6s ease-in-out infinite",
-
-                      "@keyframes screenShine": {
-                        "0%, 45%": {
-                          transform: "translateX(100%)",
-                        },
-                        "65%, 80%": {
-                          transform: "translateX(-120%)",
-                        },
-                        "100%": {
-                          transform: "translateX(-120%)",
-                        },
-                      },
-                    }}
-                  />
-
-                  {/* =====================================
-                      SCREEN HEADER
-                  ===================================== */}
-
-                  <Box
-                    sx={{
-                      position: "relative",
-
                       display: "flex",
                       alignItems: "center",
-                      justifyContent:
-                        "space-between",
-
-                      px: {
-                        xs: 1.2,
-                        sm: 2,
-                        md: 2.3,
-                      },
-
-                      py: {
-                        xs: 0.7,
-                        sm: 1.2,
-                        md: 1.4,
-                      },
+                      gap: 1,
                     }}
                   >
                     <Box
                       sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 0.7,
-                      }}
-                    >
-                      <Box
-                        sx={{
-                          width: {
-                            xs: 25,
-                            sm: 34,
-                            md: 38,
-                          },
-
-                          height: {
-                            xs: 25,
-                            sm: 34,
-                            md: 38,
-                          },
-
-                          borderRadius: "8px",
-
-                          display: "grid",
-                          placeItems: "center",
-
-                          color: "#fff",
-
-                          background:
-                            "linear-gradient(135deg, #059669, #0F766E)",
-
-                          boxShadow:
-                            "0 7px 15px rgba(5,150,105,0.16)",
-                        }}
-                      >
-                        <TerminalRoundedIcon
-                          sx={{
-                            fontSize: {
-                              xs: 13,
-                              sm: 18,
-                              md: 20,
-                            },
-                          }}
-                        />
-                      </Box>
-
-                      <Box>
-                        <Typography
-                          sx={{
-                            fontSize: {
-                              xs: 8,
-                              sm: 10,
-                              md: 12,
-                            },
-
-                            fontWeight: 850,
-                            color: "#12302B",
-                            lineHeight: 1.1,
-                          }}
-                        >
-                          ELEVATE LAB
-                        </Typography>
-
-                        <Typography
-                          sx={{
-                            mt: 0.15,
-
-                            fontSize: {
-                              xs: 5.5,
-                              sm: 7,
-                              md: 8,
-                            },
-
-                            fontWeight: 600,
-                            color: "#8AA09A",
-                          }}
-                        >
-                          Your learning space
-                        </Typography>
-                      </Box>
-                    </Box>
-
-                    <Box
-                      sx={{
-                        px: {
-                          xs: 0.65,
-                          sm: 1,
+                        width: {
+                          xs: 34,
+                          sm: 42,
                         },
-
-                        py: 0.35,
-
-                        borderRadius: "50px",
-
+                        height: {
+                          xs: 34,
+                          sm: 42,
+                        },
+                        display: "grid",
+                        placeItems: "center",
+                        borderRadius: "11px",
+                        color: "#fff",
                         background:
-                          "rgba(34,197,94,0.10)",
-
-                        color: "#059669",
-
-                        fontSize: {
-                          xs: 5.5,
-                          sm: 7,
-                          md: 8,
-                        },
-
-                        fontWeight: 800,
-                        letterSpacing: 0.5,
+                          "linear-gradient(135deg,#059669,#0F766E)",
+                        boxShadow:
+                          "0 8px 18px rgba(5,150,105,.18)",
                       }}
                     >
-                      LIVE
+                      <LaptopMacRoundedIcon
+                        sx={{
+                          fontSize: {
+                            xs: 17,
+                            sm: 21,
+                          },
+                        }}
+                      />
                     </Box>
-                  </Box>
 
-                  {/* =====================================
-                      CODE WINDOW
-                  ===================================== */}
-
-                  <Box
-                    sx={{
-                      mx: {
-                        xs: 1.1,
-                        sm: 1.9,
-                        md: 2.2,
-                      },
-
-                      px: {
-                        xs: 1,
-                        sm: 1.6,
-                        md: 1.9,
-                      },
-
-                      py: {
-                        xs: 0.7,
-                        sm: 1.2,
-                        md: 1.35,
-                      },
-
-                      borderRadius: "12px",
-
-                      background:
-                        "linear-gradient(135deg, #123E36, #164F45)",
-
-                      boxShadow:
-                        "inset 0 1px 0 rgba(255,255,255,0.05)",
-
-                      fontFamily:
-                        "'Fira Code', 'Courier New', monospace",
-
-                      overflow: "hidden",
-                    }}
-                  >
-                    <Typography
-                      component="div"
-                      sx={{
-                        fontFamily: "inherit",
-
-                        fontSize: {
-                          xs: 6.5,
-                          sm: 7.5,
-                          md: 9,
-                        },
-
-                        lineHeight: {
-                          xs: 1.5,
-                          sm: 1.65,
-                          md: 1.65,
-                        },
-
-                        color: "#7DD3FC",
-                        whiteSpace: "nowrap",
-                      }}
-                    >
-                      <Box
-                        component="span"
-                        sx={{ color: "#67E8F9" }}
-                      >
-                        const
-                      </Box>{" "}
-                      future ={" "}
-                      <Box
-                        component="span"
-                        sx={{ color: "#F9A8D4" }}
-                      >
-                        "developer"
-                      </Box>
-                      ;
-                      <br />
-
-                      <Box
-                        component="span"
-                        sx={{ color: "#67E8F9" }}
-                      >
-                        const
-                      </Box>{" "}
-                      skills = [
-                      <Box
-                        component="span"
-                        sx={{ color: "#F9A8D4" }}
-                      >
-                        "React"
-                      </Box>
-                      ,{" "}
-                      <Box
-                        component="span"
-                        sx={{ color: "#F9A8D4" }}
-                      >
-                        "Node"
-                      </Box>
-                      ];
-                      <br />
-
-                      <Box
-                        component="span"
-                        sx={{ color: "#C4B5FD" }}
-                      >
-                        build
-                      </Box>
-                      (future);
-                    </Typography>
-                  </Box>
-
-                  {/* =====================================
-                      PROGRESS
-                  ===================================== */}
-
-                  <Box
-                    sx={{
-                      mx: {
-                        xs: 1.2,
-                        sm: 2,
-                        md: 2.3,
-                      },
-
-                      mt: {
-                        xs: 0.9,
-                        sm: 1.6,
-                        md: 1.8,
-                      },
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        display: "flex",
-                        justifyContent:
-                          "space-between",
-
-                        mb: 0.45,
-                      }}
-                    >
+                    <Box>
                       <Typography
                         sx={{
                           fontSize: {
-                            xs: 6,
-                            sm: 7.5,
-                            md: 9,
+                            xs: 9,
+                            sm: 11,
                           },
-
-                          fontWeight: 750,
-                          color: "#657D76",
+                          fontWeight: 850,
+                          color: "#12302B",
                         }}
                       >
-                        Learning Progress
+                        Learn • Practice • Build
                       </Typography>
 
                       <Typography
@@ -1026,448 +863,757 @@ const Hero = () => {
                           fontSize: {
                             xs: 6.5,
                             sm: 8,
-                            md: 10,
                           },
-
-                          fontWeight: 850,
-                          color: "#059669",
+                          color: "#82958F",
                         }}
                       >
-                        82%
+                        Your technology journey starts here
+                      </Typography>
+                    </Box>
+                  </Box>
+
+                  <Chip
+                    label="LEARNING"
+                    size="small"
+                    sx={{
+                      height: {
+                        xs: 20,
+                        sm: 23,
+                      },
+                      background:
+                        "rgba(5,150,105,.08)",
+                      color: "#059669",
+                      fontSize: {
+                        xs: 6,
+                        sm: 7,
+                      },
+                      fontWeight: 800,
+                    }}
+                  />
+                </Box>
+
+                {/* COURSE AREA */}
+
+                <Box
+                  sx={{
+                    mt: {
+                      xs: 2,
+                      sm: 2.5,
+                    },
+                    display: "grid",
+                    gridTemplateColumns:
+                      "1.35fr .8fr",
+                    gap: 1.2,
+                  }}
+                >
+                  {/* MAIN COURSE */}
+
+                  <Box
+                    sx={{
+                      p: {
+                        xs: 1.3,
+                        sm: 1.6,
+                      },
+                      borderRadius: "14px",
+                      background:
+                        "linear-gradient(135deg,#123E36,#165448)",
+                      minHeight: {
+                        xs: 145,
+                        sm: 175,
+                      },
+                      position: "relative",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        position: "absolute",
+                        width: 120,
+                        height: 120,
+                        borderRadius: "50%",
+                        background:
+                          "rgba(52,211,153,.12)",
+                        right: -45,
+                        bottom: -45,
+                      }}
+                    />
+
+                    <Typography
+                      sx={{
+                        position: "relative",
+                        fontSize: {
+                          xs: 6.5,
+                          sm: 8,
+                        },
+                        fontWeight: 800,
+                        color:
+                          "rgba(255,255,255,.55)",
+                        letterSpacing: 1,
+                      }}
+                    >
+                      FEATURED PROGRAM
+                    </Typography>
+
+                    <Typography
+                      sx={{
+                        position: "relative",
+                        mt: 1,
+                        fontSize: {
+                          xs: 15,
+                          sm: 20,
+                        },
+                        lineHeight: 1.15,
+                        fontWeight: 850,
+                        color: "#fff",
+                      }}
+                    >
+                      Full Stack
+                      <br />
+                      Development
+                    </Typography>
+
+                    <Box
+                      sx={{
+                        position: "relative",
+                        display: "flex",
+                        gap: 0.5,
+                        mt: 1.4,
+                        flexWrap: "wrap",
+                      }}
+                    >
+                      {["React", "Node", "MongoDB"].map(
+                        (tech) => (
+                          <Box
+                            key={tech}
+                            sx={{
+                              px: 0.7,
+                              py: 0.35,
+                              borderRadius: "5px",
+                              background:
+                                "rgba(255,255,255,.10)",
+                              color:
+                                "rgba(255,255,255,.78)",
+                              fontSize: {
+                                xs: 5.5,
+                                sm: 6.5,
+                              },
+                              fontWeight: 700,
+                            }}
+                          >
+                            {tech}
+                          </Box>
+                        )
+                      )}
+                    </Box>
+
+                    <Box
+                      sx={{
+                        position: "relative",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 0.5,
+                        mt: 1.3,
+                      }}
+                    >
+                      <TrendingUpRoundedIcon
+                        sx={{
+                          fontSize: 13,
+                          color: "#6EE7B7",
+                        }}
+                      />
+
+                      <Typography
+                        sx={{
+                          fontSize: {
+                            xs: 6,
+                            sm: 7,
+                          },
+                          color:
+                            "rgba(255,255,255,.65)",
+                        }}
+                      >
+                        Project-based learning
+                      </Typography>
+                    </Box>
+                  </Box>
+
+                  {/* SIDE STATS */}
+
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: 1,
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        flex: 1,
+                        p: 1.1,
+                        borderRadius: "13px",
+                        background:
+                          "rgba(255,255,255,.72)",
+                        border:
+                          "1px solid rgba(5,150,105,.07)",
+                      }}
+                    >
+                      <SchoolRoundedIcon
+                        sx={{
+                          fontSize: {
+                            xs: 16,
+                            sm: 19,
+                          },
+                          color: "#059669",
+                        }}
+                      />
+
+                      <Typography
+                        sx={{
+                          mt: 0.5,
+                          fontSize: {
+                            xs: 14,
+                            sm: 18,
+                          },
+                          fontWeight: 850,
+                          color: "#12302B",
+                        }}
+                      >
+                        10+
+                      </Typography>
+
+                      <Typography
+                        sx={{
+                          fontSize: {
+                            xs: 5.5,
+                            sm: 6.5,
+                          },
+                          color: "#80938D",
+                        }}
+                      >
+                        Learning paths
                       </Typography>
                     </Box>
 
                     <Box
                       sx={{
-                        height: {
-                          xs: 3,
-                          sm: 5,
-                          md: 6,
-                        },
-
-                        borderRadius: "50px",
-                        overflow: "hidden",
-
+                        flex: 1,
+                        p: 1.1,
+                        borderRadius: "13px",
                         background:
-                          "rgba(5,150,105,0.10)",
+                          "rgba(255,255,255,.72)",
+                        border:
+                          "1px solid rgba(37,99,235,.07)",
                       }}
                     >
-                      <Box
-                        sx={{
-                          width: "82%",
-                          height: "100%",
-                          borderRadius: "50px",
-
-                          background:
-                            "linear-gradient(90deg, #059669, #2563EB)",
-
-                          animation:
-                            "progressLoad 1.8s ease forwards",
-
-                          "@keyframes progressLoad": {
-                            from: {
-                              width: "0%",
-                            },
-                            to: {
-                              width: "82%",
-                            },
-                          },
-                        }}
-                      />
-                    </Box>
-                  </Box>
-
-                  {/* =====================================
-                      TECHNOLOGY CHIPS
-                  ===================================== */}
-
-                  <Box
-                    sx={{
-                      display: "flex",
-
-                      gap: {
-                        xs: 0.3,
-                        sm: 0.5,
-                      },
-
-                      flexWrap: "wrap",
-
-                      mx: {
-                        xs: 1.2,
-                        sm: 2,
-                        md: 2.3,
-                      },
-
-                      mt: {
-                        xs: 0.8,
-                        sm: 1.4,
-                        md: 1.6,
-                      },
-                    }}
-                  >
-                    {[
-                      "React",
-                      "Node.js",
-                      "MongoDB",
-                      "UI/UX",
-                    ].map((tech, index) => (
-                      <Chip
-                        key={tech}
-                        label={tech}
-                        size="small"
-                        sx={{
-                          height: {
-                            xs: 18,
-                            sm: 21,
-                            md: 24,
-                          },
-
-                          borderRadius: "6px",
-
-                          background:
-                            "rgba(5,150,105,0.07)",
-
-                          color:
-                            index === 3
-                              ? "#0F766E"
-                              : "#35776A",
-
-                          fontSize: {
-                            xs: 5.2,
-                            sm: 6.5,
-                            md: 7.5,
-                          },
-
-                          fontWeight: 700,
-
-                          "& .MuiChip-label": {
-                            px: {
-                              xs: 0.6,
-                              sm: 0.8,
-                              md: 1,
-                            },
-                          },
-                        }}
-                      />
-                    ))}
-                  </Box>
-
-                  {/* =====================================
-                      NEXT MILESTONE
-                  ===================================== */}
-
-                  <Box
-                    sx={{
-                      mx: {
-                        xs: 1.2,
-                        sm: 2,
-                        md: 2.3,
-                      },
-
-                      mt: {
-                        xs: 0.8,
-                        sm: 1.4,
-                        md: 1.6,
-                      },
-
-                      mb: {
-                        xs: 0.8,
-                        sm: 1.5,
-                        md: 1.7,
-                      },
-
-                      px: {
-                        xs: 1,
-                        sm: 1.5,
-                        md: 1.7,
-                      },
-
-                      py: {
-                        xs: 0.7,
-                        sm: 1,
-                        md: 1.2,
-                      },
-
-                      borderRadius: "11px",
-
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent:
-                        "space-between",
-
-                      background:
-                        "linear-gradient(135deg, rgba(5,150,105,0.06), rgba(37,99,235,0.06))",
-
-                      border:
-                        "1px solid rgba(5,150,105,0.05)",
-                    }}
-                  >
-                    <Box>
-                      <Typography
+                      <RocketLaunchRoundedIcon
                         sx={{
                           fontSize: {
-                            xs: 5.2,
-                            sm: 6.5,
-                            md: 7.5,
+                            xs: 16,
+                            sm: 19,
                           },
-
-                          fontWeight: 700,
-                          color: "#91A59F",
-                          letterSpacing: 0.35,
+                          color: "#2563EB",
                         }}
-                      >
-                        NEXT MILESTONE
-                      </Typography>
+                      />
 
                       <Typography
                         sx={{
-                          mt: 0.2,
-
+                          mt: 0.5,
                           fontSize: {
-                            xs: 7.2,
-                            sm: 9,
-                            md: 11,
+                            xs: 14,
+                            sm: 18,
                           },
-
                           fontWeight: 850,
                           color: "#12302B",
                         }}
                       >
-                        Build Real Project
+                        25+
+                      </Typography>
+
+                      <Typography
+                        sx={{
+                          fontSize: {
+                            xs: 5.5,
+                            sm: 6.5,
+                          },
+                          color: "#80938D",
+                        }}
+                      >
+                        Project ideas
                       </Typography>
                     </Box>
+                  </Box>
+                </Box>
 
-                    <RocketLaunchRoundedIcon
+                {/* PROGRESS */}
+
+                <Box
+                  sx={{
+                    mt: 1.4,
+                    p: {
+                      xs: 1.1,
+                      sm: 1.4,
+                    },
+                    borderRadius: "13px",
+                    background:
+                      "rgba(5,150,105,.055)",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent:
+                        "space-between",
+                      mb: 0.6,
+                    }}
+                  >
+                    <Typography
                       sx={{
                         fontSize: {
-                          xs: 16,
-                          sm: 21,
-                          md: 25,
+                          xs: 6.5,
+                          sm: 8,
                         },
+                        fontWeight: 750,
+                        color: "#627A73",
+                      }}
+                    >
+                      Your learning progress
+                    </Typography>
 
-                        color: "#2563EB",
+                    <Typography
+                      sx={{
+                        fontSize: {
+                          xs: 7,
+                          sm: 9,
+                        },
+                        fontWeight: 850,
+                        color: "#059669",
+                      }}
+                    >
+                      82%
+                    </Typography>
+                  </Box>
 
+                  <Box
+                    sx={{
+                      height: {
+                        xs: 4,
+                        sm: 5,
+                      },
+                      borderRadius: "50px",
+                      background:
+                        "rgba(5,150,105,.10)",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        width: "82%",
+                        height: "100%",
+                        borderRadius: "50px",
+                        background:
+                          "linear-gradient(90deg,#059669,#2563EB)",
                         animation:
-                          "rocketFloat 2.5s ease-in-out infinite",
+                          "progressFill 1.6s ease forwards",
 
-                        "@keyframes rocketFloat": {
-                          "0%, 100%": {
-                            transform:
-                              "translateY(0) rotate(-5deg)",
+                        "@keyframes progressFill": {
+                          from: {
+                            width: "0%",
                           },
-
-                          "50%": {
-                            transform:
-                              "translateY(-4px) rotate(3deg)",
+                          to: {
+                            width: "82%",
                           },
                         },
                       }}
                     />
                   </Box>
                 </Box>
-              </Box>
 
-              {/* =========================================
-                  MONITOR STAND
-              ========================================= */}
-
-              <Box
-                sx={{
-                  position: "relative",
-
-                  width: {
-                    xs: 65,
-                    sm: 90,
-                    md: 105,
-                  },
-
-                  height: {
-                    xs: 40,
-                    sm: 52,
-                    md: 60,
-                  },
-
-                  mx: "auto",
-
-                  mt: {
-                    xs: -1,
-                    sm: -1.2,
-                    md: -1.5,
-                  },
-
-                  zIndex: 2,
-                }}
-              >
-                <Box
-                  sx={{
-                    position: "absolute",
-                    top: 0,
-                    left: "50%",
-                    transform:
-                      "translateX(-50%)",
-
-                    width: {
-                      xs: 13,
-                      sm: 18,
-                      md: 21,
-                    },
-
-                    height: "100%",
-
-                    borderRadius:
-                      "0 0 7px 7px",
-
-                    background:
-                      "linear-gradient(90deg, #143D36, #0B2D28)",
-                  }}
-                />
+                {/* BOTTOM FEATURES */}
 
                 <Box
                   sx={{
-                    position: "absolute",
-                    bottom: 0,
-                    left: "50%",
-                    transform:
-                      "translateX(-50%)",
-
-                    width: {
-                      xs: 78,
-                      sm: 105,
-                      md: 125,
-                    },
-
-                    height: {
-                      xs: 6,
-                      sm: 9,
-                      md: 10,
-                    },
-
-                    borderRadius: "50%",
-
-                    background:
-                      "linear-gradient(90deg, #123E36, #071F1B)",
-
-                    boxShadow:
-                      "0 7px 14px rgba(18,48,43,0.14)",
+                    display: "flex",
+                    justifyContent:
+                      "space-between",
+                    gap: 1,
+                    mt: 1.3,
                   }}
-                />
+                >
+                  {[
+                    "Mentorship",
+                    "Projects",
+                    "Career Skills",
+                  ].map((item) => (
+                    <Box
+                      key={item}
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: 0.4,
+                      }}
+                    >
+                      <CheckCircleRoundedIcon
+                        sx={{
+                          fontSize: 11,
+                          color: "#059669",
+                        }}
+                      />
+
+                      <Typography
+                        sx={{
+                          fontSize: {
+                            xs: 5.5,
+                            sm: 7,
+                          },
+                          fontWeight: 700,
+                          color: "#708780",
+                        }}
+                      >
+                        {item}
+                      </Typography>
+                    </Box>
+                  ))}
+                </Box>
               </Box>
             </Box>
 
-            {/* =========================================
-                EXPERIENCE FLOATING CARD
-            ========================================= */}
+            {/* =================================================
+                FLOATING CARD — MENTOR
+            ================================================= */}
 
             <Box
               sx={{
                 position: "absolute",
-                zIndex: 9,
-
-                right: {
+                zIndex: 8,
+                top: {
+                  xs: 5,
+                  sm: 25,
+                  md: 35,
+                },
+                left: {
                   xs: 0,
-                  sm: 0,
-                  md: -5,
+                  sm: -5,
+                  md: 0,
                 },
-
-                bottom: {
-                  xs: 8,
-                  sm: 22,
-                  md: 28,
-                },
-
                 display: "flex",
                 alignItems: "center",
                 gap: 0.8,
-
-                px: 1.5,
+                px: {
+                  xs: 1.2,
+                  sm: 1.5,
+                },
                 py: 1,
-
                 borderRadius: "15px",
-
                 background:
-                  "rgba(255,255,255,0.84)",
-
+                  "rgba(255,255,255,.86)",
                 border:
-                  "1px solid rgba(255,255,255,0.9)",
-
+                  "1px solid rgba(255,255,255,.95)",
                 backdropFilter: "blur(14px)",
-
                 boxShadow:
-                  "0 14px 30px rgba(37,99,235,0.10)",
-
+                  "0 15px 32px rgba(15,118,110,.11)",
                 animation:
-                  "experienceFloat 4.5s ease-in-out infinite",
+                  "mentorFloat 4s ease-in-out infinite",
 
-                "@keyframes experienceFloat": {
-                  "0%, 100%": {
+                "@keyframes mentorFloat": {
+                  "0%,100%": {
                     transform: "translateY(0)",
                   },
-
                   "50%": {
                     transform: "translateY(-8px)",
                   },
                 },
               }}
             >
-              <RocketLaunchRoundedIcon
+              <GroupsRoundedIcon
                 sx={{
-                  color: "#2563EB",
                   fontSize: 19,
+                  color: "#059669",
                 }}
               />
 
               <Box>
                 <Typography
                   sx={{
-                    fontSize: 8,
-                    fontWeight: 700,
-                    color: "#8AA09A",
+                    fontSize: 7,
+                    fontWeight: 750,
+                    color: "#91A49E",
+                    letterSpacing: 0.5,
                   }}
                 >
-                  EXPERIENCE
+                  LEARN WITH
                 </Typography>
 
                 <Typography
                   sx={{
-                    fontSize: 11,
-                    fontWeight: 800,
+                    fontSize: 10.5,
+                    fontWeight: 850,
                     color: "#12302B",
                   }}
                 >
-                  Build Projects
+                  Expert Mentors
                 </Typography>
               </Box>
             </Box>
+
+            {/* =================================================
+                FLOATING CARD — PROJECT
+            ================================================= */}
+
+            <Box
+              sx={{
+                position: "absolute",
+                zIndex: 8,
+                right: {
+                  xs: 0,
+                  sm: -3,
+                  md: 0,
+                },
+                bottom: {
+                  xs: 4,
+                  sm: 20,
+                  md: 25,
+                },
+                display: "flex",
+                alignItems: "center",
+                gap: 0.8,
+                px: {
+                  xs: 1.2,
+                  sm: 1.5,
+                },
+                py: 1,
+                borderRadius: "15px",
+                background:
+                  "rgba(255,255,255,.88)",
+                border:
+                  "1px solid rgba(255,255,255,.95)",
+                backdropFilter: "blur(14px)",
+                boxShadow:
+                  "0 15px 32px rgba(37,99,235,.10)",
+                animation:
+                  "projectFloat 4.5s ease-in-out infinite",
+
+                "@keyframes projectFloat": {
+                  "0%,100%": {
+                    transform: "translateY(0)",
+                  },
+                  "50%": {
+                    transform: "translateY(-9px)",
+                  },
+                },
+              }}
+            >
+              <RocketLaunchRoundedIcon
+                sx={{
+                  fontSize: 19,
+                  color: "#2563EB",
+                }}
+              />
+
+              <Box>
+                <Typography
+                  sx={{
+                    fontSize: 7,
+                    fontWeight: 750,
+                    color: "#91A49E",
+                    letterSpacing: 0.5,
+                  }}
+                >
+                  BUILD
+                </Typography>
+
+                <Typography
+                  sx={{
+                    fontSize: 10.5,
+                    fontWeight: 850,
+                    color: "#12302B",
+                  }}
+                >
+                  Real Projects
+                </Typography>
+              </Box>
+            </Box>
+
+            {/* PLAY BUTTON */}
+
+            <Box
+              sx={{
+                position: "absolute",
+                zIndex: 10,
+                top: "50%",
+                left: "50%",
+                transform:
+                  "translate(-50%,-50%)",
+                width: {
+                  xs: 48,
+                  sm: 58,
+                },
+                height: {
+                  xs: 48,
+                  sm: 58,
+                },
+                display: "grid",
+                placeItems: "center",
+                borderRadius: "50%",
+                background:
+                  "rgba(255,255,255,.88)",
+                backdropFilter: "blur(12px)",
+                boxShadow:
+                  "0 12px 28px rgba(15,118,110,.16)",
+                opacity: 0.92,
+                animation:
+                  "playPulse 3s ease-in-out infinite",
+
+                "@keyframes playPulse": {
+                  "0%,100%": {
+                    boxShadow:
+                      "0 12px 28px rgba(15,118,110,.16)",
+                  },
+                  "50%": {
+                    boxShadow:
+                      "0 15px 38px rgba(15,118,110,.28)",
+                  },
+                },
+              }}
+            >
+              <PlayCircleOutlineRoundedIcon
+                sx={{
+                  fontSize: {
+                    xs: 27,
+                    sm: 34,
+                  },
+                  color: "#059669",
+                }}
+              />
+            </Box>
           </Box>
+        </Box>
+
+        {/* =====================================================
+            STATS STRIP
+        ===================================================== */}
+
+        <Box
+          sx={{
+            mt: {
+              xs: 5,
+              sm: 6,
+              lg: 3,
+            },
+            display: "grid",
+            gridTemplateColumns: {
+              xs: "repeat(2,1fr)",
+              sm: "repeat(4,1fr)",
+            },
+            gap: {
+              xs: 1,
+              sm: 1.5,
+              md: 2,
+            },
+            maxWidth: 1000,
+            mx: "auto",
+          }}
+        >
+          {[
+            ["01", "Learning Paths", "Career-focused programs"],
+            ["02", "Hands-on Projects", "Learn by building"],
+            ["03", "Expert Guidance", "Mentor-led learning"],
+            ["04", "Future Skills", "Industry-ready mindset"],
+          ].map(([number, title, subtitle]) => (
+            <Box
+              key={number}
+              sx={{
+                position: "relative",
+                p: {
+                  xs: 1.4,
+                  sm: 1.7,
+                  md: 2,
+                },
+                borderRadius: "15px",
+                background:
+                  "rgba(255,255,255,.48)",
+                border:
+                  "1px solid rgba(5,150,105,.07)",
+                backdropFilter: "blur(10px)",
+                transition:
+                  "transform .3s ease, background .3s ease",
+
+                "&:hover": {
+                  transform: "translateY(-4px)",
+                  background:
+                    "rgba(255,255,255,.72)",
+                },
+              }}
+            >
+              <Typography
+                sx={{
+                  fontSize: {
+                    xs: 7,
+                    sm: 8,
+                  },
+                  fontWeight: 850,
+                  color: "#059669",
+                  letterSpacing: 1,
+                }}
+              >
+                {number}
+              </Typography>
+
+              <Typography
+                sx={{
+                  mt: 0.5,
+                  fontSize: {
+                    xs: 9,
+                    sm: 10,
+                    md: 11,
+                  },
+                  fontWeight: 850,
+                  color: "#12302B",
+                }}
+              >
+                {title}
+              </Typography>
+
+              <Typography
+                sx={{
+                  mt: 0.2,
+                  fontSize: {
+                    xs: 6.5,
+                    sm: 7.5,
+                  },
+                  color: "#82938E",
+                }}
+              >
+                {subtitle}
+              </Typography>
+            </Box>
+          ))}
         </Box>
       </Container>
 
-      {/* =========================================
+      {/* =====================================================
           SCROLL INDICATOR
-      ========================================= */}
+      ===================================================== */}
 
       <Box
         sx={{
           position: "absolute",
-          bottom: 22,
+          bottom: 16,
           left: "50%",
           transform: "translateX(-50%)",
           display: {
             xs: "none",
             md: "flex",
           },
-
           flexDirection: "column",
           alignItems: "center",
-          gap: 0.7,
-
-          opacity: 0.65,
+          gap: 0.5,
+          opacity: 0.55,
         }}
       >
         <Typography
           sx={{
-            fontSize: 8,
-            fontWeight: 700,
+            fontSize: 7,
+            fontWeight: 750,
             letterSpacing: 2,
             color: "#78908A",
           }}
@@ -1478,20 +1624,17 @@ const Hero = () => {
         <Box
           sx={{
             width: 1,
-            height: 28,
-
+            height: 25,
             background:
-              "linear-gradient(#059669, transparent)",
-
+              "linear-gradient(#059669,transparent)",
             animation:
-              "scrollLine 1.8s ease-in-out infinite",
+              "scrollHero 1.8s ease-in-out infinite",
 
-            "@keyframes scrollLine": {
-              "0%, 100%": {
-                transform: "scaleY(0.5)",
+            "@keyframes scrollHero": {
+              "0%,100%": {
+                transform: "scaleY(.45)",
                 transformOrigin: "top",
               },
-
               "50%": {
                 transform: "scaleY(1)",
                 transformOrigin: "top",

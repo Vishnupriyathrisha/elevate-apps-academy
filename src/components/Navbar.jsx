@@ -1,8 +1,9 @@
+import { useState } from "react";
+
 import {
   AppBar,
   Toolbar,
   Box,
-  Typography,
   Button,
   Container,
 } from "@mui/material";
@@ -11,33 +12,59 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import MenuBookOutlinedIcon from "@mui/icons-material/MenuBookOutlined";
 import AutoAwesomeOutlinedIcon from "@mui/icons-material/AutoAwesomeOutlined";
+import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
+import PublicOutlinedIcon from "@mui/icons-material/PublicOutlined";
+import EventOutlinedIcon from "@mui/icons-material/EventOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
+import ArrowOutwardRoundedIcon from "@mui/icons-material/ArrowOutwardRounded";
 
 import elogo from "../assets/elogo.png";
 
+const navItems = [
+  {
+    label: "Home",
+    href: "#home",
+    icon: <HomeOutlinedIcon />,
+  },
+  {
+    label: "About",
+    href: "#about",
+    icon: <InfoOutlinedIcon />,
+  },
+  {
+    label: "Programs",
+    href: "#programs",
+    icon: <MenuBookOutlinedIcon />,
+  },
+  {
+    label: "Why Us",
+    href: "#why-us",
+    icon: <AutoAwesomeOutlinedIcon />,
+  },
+  {
+    label: "Learning",
+    href: "#learning",
+    icon: <GroupsOutlinedIcon />,
+  },
+  {
+    label: "Network",
+    href: "#network",
+    icon: <PublicOutlinedIcon />,
+  },
+  {
+    label: "Events",
+    href: "#events",
+    icon: <EventOutlinedIcon />,
+  },
+  {
+    label: "Contact",
+    href: "#contact",
+    icon: <EmailOutlinedIcon />,
+  },
+];
+
 const Navbar = () => {
-  const navItems = [
-    {
-      label: "Home",
-      icon: <HomeOutlinedIcon />,
-    },
-    {
-      label: "About",
-      icon: <InfoOutlinedIcon />,
-    },
-    {
-      label: "Courses",
-      icon: <MenuBookOutlinedIcon />,
-    },
-    {
-      label: "Why Us",
-      icon: <AutoAwesomeOutlinedIcon />,
-    },
-    {
-      label: "Contact",
-      icon: <EmailOutlinedIcon />,
-    },
-  ];
+  const [activeItem, setActiveItem] = useState("Home");
 
   return (
     <AppBar
@@ -49,21 +76,40 @@ const Navbar = () => {
         WebkitBackdropFilter: "blur(18px)",
         borderBottom: "1px solid rgba(5, 150, 105, 0.08)",
         color: "#12302B",
+        zIndex: 1200,
       }}
     >
-      <Container maxWidth="xl">
+      <Container
+        maxWidth="xl"
+        sx={{
+          px: {
+            xs: 1,
+            sm: 2,
+            md: 3,
+          },
+        }}
+      >
         <Toolbar
           disableGutters
           sx={{
-            minHeight: { xs: 68, sm: 76, md: 94 },
+            minHeight: {
+              xs: 66,
+              sm: 76,
+              md: 86,
+            },
+            gap: {
+              xs: 0.8,
+              sm: 1.2,
+              md: 2,
+            },
             justifyContent: "space-between",
-            gap: { xs: 0.5, sm: 1 },
           }}
         >
           {/* LOGO */}
           <Box
             component="a"
             href="#home"
+            onClick={() => setActiveItem("Home")}
             sx={{
               display: "flex",
               alignItems: "center",
@@ -76,149 +122,203 @@ const Navbar = () => {
               src={elogo}
               alt="Elevate Apps Academy"
               sx={{
-              width: { xs: 58, sm: 68, md: 98, lg: 96 },
-              height: { xs: 58, sm: 68, md: 98, lg: 96 },
-              objectFit: "contain",
-              display: "block",
-              transition: "transform 0.3s ease",
+                width: {
+                  xs: 52,
+                  sm: 64,
+                  md: 78,
+                  lg: 86,
+                },
+                height: {
+                  xs: 52,
+                  sm: 64,
+                  md: 78,
+                  lg: 86,
+                },
+                objectFit: "contain",
+                display: "block",
+                transition: "transform 0.3s ease",
 
                 "&:hover": {
-                transform: "scale(1.05)",
-                 },
-            }}
+                  transform: "scale(1.05)",
+                },
+              }}
             />
           </Box>
 
           {/* NAVIGATION */}
           <Box
             sx={{
+              flex: 1,
+              minWidth: 0,
               display: "flex",
               alignItems: "center",
-              justifyContent: "center",
-              flex: 1,
+              justifyContent: {
+                xs: "flex-start",
+                lg: "center",
+              },
               gap: {
-                xs: 0,
-                sm: 0.3,
-                md: 0.7,
-                lg: 1.2,
+                xs: 0.2,
+                sm: 0.4,
+                md: 0.5,
+                lg: 0.7,
+              },
+              overflowX: "auto",
+              overflowY: "hidden",
+              scrollbarWidth: "none",
+
+              "&::-webkit-scrollbar": {
+                display: "none",
               },
             }}
           >
-            {navItems.map((item) => (
-              <Button
-                key={item.label}
-                href={`#${item.label
-                  .toLowerCase()
-                  .replace(" ", "-")}`}
-                startIcon={item.icon}
-                sx={{
-                  minWidth: "auto",
-                  px: {
-                    xs: 0.55,
-                    sm: 0.9,
-                    md: 1.3,
-                    lg: 1.7,
-                  },
-                  py: 0.8,
-                  color: "#526C65",
-                  fontSize: {
-                    xs: 8,
-                    sm: 10,
-                    md: 11,
-                    lg: 12,
-                  },
-                  fontWeight: 600,
-                  textTransform: "none",
-                  borderRadius: "9px",
-                  whiteSpace: "nowrap",
+            {navItems.map((item) => {
+              const isActive = activeItem === item.label;
 
-                  "& .MuiButton-startIcon": {
-                    marginRight: {
-                      xs: 0.2,
-                      sm: 0.35,
-                      md: 0.5,
+              return (
+                <Button
+                  key={item.label}
+                  href={item.href}
+                  startIcon={item.icon}
+                  onClick={() => setActiveItem(item.label)}
+                  sx={{
+                    position: "relative",
+                    flexShrink: 0,
+                    minWidth: "auto",
+                    px: {
+                      xs: 0.65,
+                      sm: 0.9,
+                      md: 1.1,
+                      lg: 1.25,
                     },
-                  },
-
-                  "& .MuiButton-startIcon svg": {
+                    py: {
+                      xs: 0.8,
+                      sm: 1,
+                      md: 1.1,
+                    },
+                    color: isActive ? "#059669" : "#526C65",
+                    background: isActive
+                      ? "rgba(5, 150, 105, 0.08)"
+                      : "transparent",
                     fontSize: {
-                      xs: 13,
-                      sm: 15,
-                      md: 17,
+                      xs: 9,
+                      sm: 10,
+                      md: 11,
+                      lg: 12,
                     },
-                  },
+                    fontWeight: isActive ? 800 : 650,
+                    textTransform: "none",
+                    whiteSpace: "nowrap",
+                    borderRadius: "9px",
+                    transition:
+                      "color 0.25s ease, background 0.25s ease",
 
-                  "&::after": {
-                    content: '""',
-                    position: "absolute",
-                    left: "50%",
-                    bottom: 2,
-                    width: 0,
-                    height: "2px",
-                    borderRadius: "10px",
-                    background:
-                      "linear-gradient(90deg, #059669, #2563EB)",
-                    transform: "translateX(-50%)",
-                    transition: "width 0.3s ease",
-                  },
+                    "& .MuiButton-startIcon": {
+                      marginRight: {
+                        xs: 0.25,
+                        sm: 0.4,
+                        md: 0.55,
+                      },
+                      transition: "transform 0.25s ease",
+                    },
 
-                  "&:hover": {
-                    color: "#059669",
-                    background:
-                      "rgba(5, 150, 105, 0.05)",
-                  },
+                    "& .MuiButton-startIcon svg": {
+                      fontSize: {
+                        xs: 13,
+                        sm: 15,
+                        md: 17,
+                      },
+                    },
 
-                  "&:hover .MuiButton-startIcon": {
-                    color: "#059669",
-                    transform: "translateY(-2px)",
-                  },
+                    "&::after": {
+                      content: '""',
+                      position: "absolute",
+                      left: "18%",
+                      right: "18%",
+                      bottom: 3,
+                      height: "2px",
+                      borderRadius: "20px",
+                      background:
+                        "linear-gradient(90deg, #059669, #2563EB)",
+                      transform: isActive
+                        ? "scaleX(1)"
+                        : "scaleX(0)",
+                      transition: "transform 0.3s ease",
+                    },
 
-                  "&:hover::after": {
-                    width: "45%",
-                  },
-                }}
-              >
-                {item.label}
-              </Button>
-            ))}
+                    "&:hover": {
+                      color: "#059669",
+                      background: "rgba(5, 150, 105, 0.06)",
+                    },
+
+                    "&:hover .MuiButton-startIcon": {
+                      transform: "translateY(-2px)",
+                    },
+                  }}
+                >
+                  {item.label}
+                </Button>
+              );
+            })}
           </Box>
 
           {/* START LEARNING */}
           <Button
             href="#contact"
             variant="contained"
+            onClick={() => setActiveItem("Contact")}
+            endIcon={<ArrowOutwardRoundedIcon />}
             sx={{
-              display: { xs: "none", sm: "inline-flex" },
               flexShrink: 0,
-              px: { sm: 1.5, md: 2.2, lg: 2.5 },
-              py: { sm: 1, md: 1.2 },
+              minWidth: "auto",
+              px: {
+                xs: 1,
+                sm: 1.4,
+                md: 2,
+              },
+              py: {
+                xs: 0.9,
+                sm: 1,
+                md: 1.2,
+              },
               borderRadius: "50px",
               textTransform: "none",
-              fontSize: { sm: 9, md: 10, lg: 11 },
-              fontWeight: 700,
+              fontSize: {
+                xs: 9,
+                sm: 10,
+                md: 11,
+              },
+              fontWeight: 800,
+              whiteSpace: "nowrap",
               color: "#ffffff",
               background:
                 "linear-gradient(135deg, #059669, #0F766E)",
               boxShadow:
                 "0 8px 20px rgba(5, 150, 105, 0.16)",
 
+              "& .MuiButton-endIcon": {
+                ml: {
+                  xs: 0.2,
+                  sm: 0.5,
+                },
+                "& svg": {
+                  fontSize: {
+                    xs: 13,
+                    sm: 15,
+                    md: 17,
+                  },
+                },
+              },
+
               "&:hover": {
                 background:
                   "linear-gradient(135deg, #047857, #1D4ED8)",
                 transform: "translateY(-2px)",
+                boxShadow:
+                  "0 10px 24px rgba(5, 150, 105, 0.25)",
               },
             }}
           >
             Start Learning
-            <Box
-              component="span"
-              sx={{
-                ml: 0.5,
-                fontSize: 14,
-              }}
-            >
-              ↗
-            </Box>
           </Button>
         </Toolbar>
       </Container>

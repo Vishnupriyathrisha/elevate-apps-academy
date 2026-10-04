@@ -11,6 +11,13 @@ import WorkspacePremiumRoundedIcon from "@mui/icons-material/WorkspacePremiumRou
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 
+import studentLab from "../assets/student-lab.jpg";
+
+import learnImage from "../assets/learn.jpg";
+import practiceImage from "../assets/practice.jpg";
+import buildImage from "../assets/build.jpg";
+import elevateImage from "../assets/elevate.jpg";
+
 const About = () => {
   const journey = [
     {
@@ -18,24 +25,28 @@ const About = () => {
       title: "Learn",
       text: "Understand concepts through structured and practical learning.",
       icon: <SchoolRoundedIcon />,
+      image: learnImage,
     },
     {
       number: "02",
       title: "Practice",
       text: "Strengthen your skills by solving real development challenges.",
       icon: <LightbulbRoundedIcon />,
+      image: practiceImage,
     },
     {
       number: "03",
       title: "Build",
       text: "Turn your knowledge into meaningful real-world projects.",
       icon: <GroupsRoundedIcon />,
+      image: buildImage,
     },
     {
       number: "04",
       title: "Elevate",
       text: "Grow your confidence and prepare for your next career step.",
       icon: <WorkspacePremiumRoundedIcon />,
+      image: elevateImage,
     },
   ];
 
@@ -59,8 +70,6 @@ const About = () => {
           sm: 11,
           md: 14,
         },
-
-        /* SAME FAMILY AS HERO */
 
         background: `
           radial-gradient(
@@ -97,13 +106,11 @@ const About = () => {
           width: { xs: 220, md: 360 },
           height: { xs: 220, md: 360 },
           borderRadius: "50%",
-          background:
-            "rgba(5,150,105,0.055)",
+          background: "rgba(5,150,105,0.055)",
           filter: "blur(3px)",
           top: 40,
           left: -120,
-          animation:
-            "aboutBlobOne 10s ease-in-out infinite",
+          animation: "aboutBlobOne 10s ease-in-out infinite",
 
           "@keyframes aboutBlobOne": {
             "0%, 100%": {
@@ -122,13 +129,11 @@ const About = () => {
           width: { xs: 260, md: 420 },
           height: { xs: 260, md: 420 },
           borderRadius: "50%",
-          background:
-            "rgba(37,99,235,0.045)",
+          background: "rgba(37,99,235,0.045)",
           filter: "blur(4px)",
           right: -160,
           bottom: 40,
-          animation:
-            "aboutBlobTwo 12s ease-in-out infinite",
+          animation: "aboutBlobTwo 12s ease-in-out infinite",
 
           "@keyframes aboutBlobTwo": {
             "0%, 100%": {
@@ -155,10 +160,8 @@ const About = () => {
           opacity: 0.25,
           top: "18%",
           left: "8%",
-          boxShadow:
-            "0 0 20px rgba(5,150,105,0.3)",
-          animation:
-            "aboutDotOne 5s ease-in-out infinite",
+          boxShadow: "0 0 20px rgba(5,150,105,0.3)",
+          animation: "aboutDotOne 5s ease-in-out infinite",
 
           "@keyframes aboutDotOne": {
             "0%, 100%": {
@@ -181,8 +184,7 @@ const About = () => {
           opacity: 0.25,
           top: "35%",
           right: "9%",
-          animation:
-            "aboutDotTwo 6s ease-in-out infinite",
+          animation: "aboutDotTwo 6s ease-in-out infinite",
 
           "@keyframes aboutDotTwo": {
             "0%, 100%": {
@@ -205,8 +207,7 @@ const About = () => {
           opacity: 0.25,
           bottom: "20%",
           left: "46%",
-          animation:
-            "aboutDotThree 7s ease-in-out infinite",
+          animation: "aboutDotThree 7s ease-in-out infinite",
 
           "@keyframes aboutDotThree": {
             "0%, 100%": {
@@ -220,7 +221,7 @@ const About = () => {
       />
 
       {/* ==================================================
-          DECORATIVE CIRCLES
+          DECORATIVE CIRCLE
       ================================================== */}
 
       <Box
@@ -229,12 +230,10 @@ const About = () => {
           width: 180,
           height: 180,
           borderRadius: "50%",
-          border:
-            "1px solid rgba(5,150,105,0.08)",
+          border: "1px solid rgba(5,150,105,0.08)",
           top: "42%",
           right: "-90px",
-          animation:
-            "aboutCircle 16s linear infinite",
+          animation: "aboutCircle 16s linear infinite",
 
           "@keyframes aboutCircle": {
             from: {
@@ -259,7 +258,6 @@ const About = () => {
           zIndex: 2,
         }}
       >
-
         {/* ==================================================
             SECTION HEADING
         ================================================== */}
@@ -274,8 +272,7 @@ const About = () => {
               md: 8,
             },
 
-            animation:
-              "aboutHeading 0.9s ease forwards",
+            animation: "aboutHeading 0.9s ease forwards",
 
             "@keyframes aboutHeading": {
               from: {
@@ -296,14 +293,12 @@ const About = () => {
               height: 30,
               px: 1,
               borderRadius: "50px",
-              background:
-                "rgba(5,150,105,0.08)",
+              background: "rgba(5,150,105,0.08)",
               color: "#047857",
               fontSize: 10,
               fontWeight: 800,
               letterSpacing: 1.8,
-              border:
-                "1px solid rgba(5,150,105,0.10)",
+              border: "1px solid rgba(5,150,105,0.10)",
             }}
           />
 
@@ -323,6 +318,7 @@ const About = () => {
             }}
           >
             Your Journey
+
             <Box
               component="span"
               sx={{
@@ -374,9 +370,8 @@ const About = () => {
             alignItems: "center",
           }}
         >
-
           {/* ==================================================
-              STORY CARD
+              LEARN WITH PURPOSE CARD
           ================================================== */}
 
           <Box
@@ -392,15 +387,9 @@ const About = () => {
                 md: "36px",
               },
               overflow: "hidden",
-              background:
-                "linear-gradient(145deg, #0F766E 0%, #059669 55%, #2563EB 100%)",
+
               boxShadow:
-                "0 25px 65px rgba(15,118,110,0.18)",
-              p: {
-                xs: 3,
-                sm: 4,
-                md: 5,
-              },
+                "0 25px 65px rgba(15,118,110,0.20)",
 
               animation:
                 "storyFloat 6s ease-in-out infinite",
@@ -414,14 +403,80 @@ const About = () => {
                 },
               },
 
+              transition:
+                "box-shadow 0.5s ease, transform 0.5s ease",
+
               "&:hover": {
                 boxShadow:
-                  "0 30px 75px rgba(15,118,110,0.25)",
+                  "0 32px 80px rgba(15,118,110,0.30)",
+
+                "& .student-lab-image": {
+                  transform: "scale(1.07)",
+                },
+
+                "& .lab-overlay": {
+                  background:
+                    "linear-gradient(145deg, rgba(4,78,66,0.84), rgba(5,118,91,0.76), rgba(29,78,216,0.72))",
+                },
+
+                "& .purpose-icon": {
+                  transform:
+                    "scale(1.08) rotate(-5deg)",
+                },
               },
             }}
           >
+            {/* STUDENT LAB IMAGE */}
 
-            {/* Glow */}
+            <Box
+              className="student-lab-image"
+              sx={{
+                position: "absolute",
+                inset: 0,
+                width: "100%",
+                height: "100%",
+
+                backgroundImage: `url(${studentLab})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+
+                transform: "scale(1)",
+                transition:
+                  "transform 1s cubic-bezier(.2,.8,.2,1)",
+              }}
+            />
+
+            {/* DARK TEAL OVERLAY */}
+
+            <Box
+              className="lab-overlay"
+              sx={{
+                position: "absolute",
+                inset: 0,
+
+                background:
+                  "linear-gradient(145deg, rgba(4,78,66,0.88), rgba(5,118,91,0.78), rgba(37,99,235,0.70))",
+
+                transition:
+                  "background 0.6s ease",
+              }}
+            />
+
+            {/* IMAGE DARK GRADIENT */}
+
+            <Box
+              sx={{
+                position: "absolute",
+                inset: 0,
+
+                background:
+                  "linear-gradient(to top, rgba(4,30,27,0.78) 0%, rgba(4,30,27,0.18) 48%, rgba(4,30,27,0.28) 100%)",
+
+                pointerEvents: "none",
+              }}
+            />
+
+            {/* GLOW CIRCLE */}
 
             <Box
               sx={{
@@ -430,7 +485,7 @@ const About = () => {
                 height: 280,
                 borderRadius: "50%",
                 background:
-                  "rgba(255,255,255,0.09)",
+                  "rgba(255,255,255,0.10)",
                 top: -100,
                 right: -90,
                 filter: "blur(5px)",
@@ -461,7 +516,7 @@ const About = () => {
               }}
             />
 
-            {/* Decorative Lines */}
+            {/* DECORATIVE CORNER */}
 
             <Box
               sx={{
@@ -471,25 +526,40 @@ const About = () => {
                 width: 75,
                 height: 75,
                 borderTop:
-                  "1px solid rgba(255,255,255,0.25)",
+                  "1px solid rgba(255,255,255,0.30)",
                 borderRight:
-                  "1px solid rgba(255,255,255,0.25)",
+                  "1px solid rgba(255,255,255,0.30)",
                 borderRadius: "0 20px 0 0",
               }}
             />
 
+            {/* CONTENT */}
+
             <Box
               sx={{
                 position: "relative",
-                zIndex: 2,
+                zIndex: 3,
                 height: "100%",
+                minHeight: {
+                  xs: 360,
+                  sm: 400,
+                  md: 450,
+                },
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "space-between",
+                p: {
+                  xs: 3,
+                  sm: 4,
+                  md: 5,
+                },
               }}
             >
               <Box>
+                {/* Icon */}
+
                 <Box
+                  className="purpose-icon"
                   sx={{
                     width: 58,
                     height: 58,
@@ -497,13 +567,17 @@ const About = () => {
                     display: "grid",
                     placeItems: "center",
                     background:
-                      "rgba(255,255,255,0.14)",
+                      "rgba(255,255,255,0.15)",
                     border:
-                      "1px solid rgba(255,255,255,0.20)",
-                    backdropFilter: "blur(10px)",
+                      "1px solid rgba(255,255,255,0.22)",
+                    backdropFilter: "blur(12px)",
                     mb: 4,
+
                     animation:
                       "iconPulse 3s ease-in-out infinite",
+
+                    transition:
+                      "transform 0.4s ease",
 
                     "@keyframes iconPulse": {
                       "0%, 100%": {
@@ -523,10 +597,12 @@ const About = () => {
                   />
                 </Box>
 
+                {/* Label */}
+
                 <Typography
                   sx={{
                     color:
-                      "rgba(255,255,255,0.70)",
+                      "rgba(255,255,255,0.78)",
                     fontSize: 10,
                     fontWeight: 800,
                     letterSpacing: 2,
@@ -534,6 +610,8 @@ const About = () => {
                 >
                   LEARN WITH PURPOSE
                 </Typography>
+
+                {/* Heading */}
 
                 <Typography
                   sx={{
@@ -548,24 +626,28 @@ const About = () => {
                     fontWeight: 800,
                     letterSpacing: "-1px",
                     maxWidth: 360,
+                    textShadow:
+                      "0 3px 20px rgba(0,0,0,0.20)",
                   }}
                 >
                   Knowledge becomes powerful when you build with it.
                 </Typography>
               </Box>
 
+              {/* Bottom content */}
+
               <Box
                 sx={{
                   mt: 5,
                   pt: 3,
                   borderTop:
-                    "1px solid rgba(255,255,255,0.16)",
+                    "1px solid rgba(255,255,255,0.20)",
                 }}
               >
                 <Typography
                   sx={{
                     color:
-                      "rgba(255,255,255,0.78)",
+                      "rgba(255,255,255,0.84)",
                     fontSize: 13,
                     lineHeight: 1.7,
                     maxWidth: 370,
@@ -828,288 +910,380 @@ const About = () => {
           >
             {journey.map((item, index) => (
               <Box
-  key={item.number}
-  sx={{
-    position: "relative",
-    p: {
-      xs: 2.5,
-      md: 3,
-    },
-    minHeight: 205,
-    borderRadius: "22px",
-    background: "rgba(255,255,255,0.58)",
-    border: "1px solid rgba(5,150,105,0.09)",
-    backdropFilter: "blur(12px)",
-    overflow: "hidden",
+                key={item.number}
+                sx={{
+                  position: "relative",
+                  minHeight: 335,
+                  borderRadius: "22px",
+                  background: "rgba(255,255,255,0.58)",
+                  border:
+                    "1px solid rgba(5,150,105,0.09)",
+                  backdropFilter: "blur(12px)",
+                  overflow: "hidden",
 
-    opacity: 0,
+                  opacity: 0,
 
-    animation: `
-      journeyReveal 0.7s ease ${0.15 * index}s forwards,
-      journeyFloat ${4 + index * 0.5}s ease-in-out ${
-      0.8 + index * 0.15
-    }s infinite
-    `,
+                  animation: `
+                    journeyReveal 0.7s ease ${0.15 * index}s forwards,
+                    journeyFloat ${4 + index * 0.5}s ease-in-out ${
+                    0.8 + index * 0.15
+                  }s infinite
+                  `,
 
-    transition:
-      "transform 0.4s cubic-bezier(.2,.8,.2,1), box-shadow 0.4s ease, border-color 0.4s ease",
+                  transition:
+                    "transform 0.4s cubic-bezier(.2,.8,.2,1), box-shadow 0.4s ease, border-color 0.4s ease",
 
-    "@keyframes journeyReveal": {
-      from: {
-        opacity: 0,
-        transform: "translateY(35px) scale(0.96)",
-      },
-      to: {
-        opacity: 1,
-        transform: "translateY(0) scale(1)",
-      },
-    },
+                  "@keyframes journeyReveal": {
+                    from: {
+                      opacity: 0,
+                      transform:
+                        "translateY(35px) scale(0.96)",
+                    },
+                    to: {
+                      opacity: 1,
+                      transform:
+                        "translateY(0) scale(1)",
+                    },
+                  },
 
-    "@keyframes journeyFloat": {
-      "0%, 100%": {
-        marginTop: "0px",
-      },
-      "50%": {
-        marginTop: "-4px",
-      },
-    },
+                  "@keyframes journeyFloat": {
+                    "0%, 100%": {
+                      marginTop: "0px",
+                    },
+                    "50%": {
+                      marginTop: "-4px",
+                    },
+                  },
 
-    /* Moving top light */
+                  "&::before": {
+                    content: '""',
+                    position: "absolute",
+                    top: 0,
+                    left: "-100%",
+                    width: "100%",
+                    height: "2px",
+                    background:
+                      "linear-gradient(90deg, transparent, #059669, #2563EB, transparent)",
+                    transition:
+                      "left 0.6s ease",
+                    zIndex: 5,
+                  },
 
-    "&::before": {
-      content: '""',
-      position: "absolute",
-      top: 0,
-      left: "-100%",
-      width: "100%",
-      height: "2px",
-      background:
-        "linear-gradient(90deg, transparent, #059669, #2563EB, transparent)",
-      transition: "left 0.6s ease",
-    },
+                  "&::after": {
+                    content: '""',
+                    position: "absolute",
+                    width: 130,
+                    height: 130,
+                    borderRadius: "50%",
+                    background:
+                      index === 3
+                        ? "rgba(37,99,235,0.07)"
+                        : "rgba(5,150,105,0.07)",
+                    top: -65,
+                    right: -65,
+                    filter: "blur(5px)",
+                    transition:
+                      "transform 0.5s ease",
+                    pointerEvents: "none",
+                    zIndex: 1,
+                  },
 
-    /* Soft inner glow */
+                  "&:hover": {
+                    transform:
+                      "translateY(-12px) scale(1.025)",
 
-    "&::after": {
-      content: '""',
-      position: "absolute",
-      width: 130,
-      height: 130,
-      borderRadius: "50%",
-      background:
-        index === 3
-          ? "rgba(37,99,235,0.07)"
-          : "rgba(5,150,105,0.07)",
-      top: -65,
-      right: -65,
-      filter: "blur(5px)",
-      transition: "transform 0.5s ease",
-      pointerEvents: "none",
-    },
+                    boxShadow:
+                      "0 24px 55px rgba(15,118,110,0.16)",
 
-    "&:hover": {
-      transform:
-        "translateY(-12px) scale(1.025)",
+                    borderColor:
+                      "rgba(5,150,105,0.22)",
 
-      boxShadow:
-        "0 24px 55px rgba(15,118,110,0.16)",
+                    "&::before": {
+                      left: "100%",
+                    },
 
-      borderColor:
-        "rgba(5,150,105,0.22)",
+                    "&::after": {
+                      transform: "scale(1.7)",
+                    },
 
-      "&::before": {
-        left: "100%",
-      },
+                    "& .journey-icon": {
+                      transform:
+                        "rotate(-8deg) scale(1.12)",
+                      boxShadow:
+                        "0 8px 22px rgba(5,150,105,0.18)",
+                    },
 
-      "&::after": {
-        transform: "scale(1.7)",
-      },
+                    "& .journey-number": {
+                      transform:
+                        "translateY(-5px) scale(1.08)",
+                      color:
+                        "rgba(5,150,105,0.16)",
+                    },
 
-      "& .journey-icon": {
-        transform:
-          "rotate(-8deg) scale(1.12)",
-        boxShadow:
-          "0 8px 22px rgba(5,150,105,0.18)",
-      },
+                    "& .journey-title": {
+                      color: "#059669",
+                    },
 
-      "& .journey-number": {
-        transform:
-          "translateY(-5px) scale(1.08)",
-        color:
-          "rgba(5,150,105,0.16)",
-      },
+                    "& .journey-image": {
+                      transform: "scale(1.08)",
+                    },
 
-      "& .journey-title": {
-        color: "#059669",
-      },
-    },
-  }}
->
-  {/* Card Header */}
+                    "& .journey-image-overlay": {
+                      opacity: 0.15,
+                    },
+                  },
+                }}
+              >
+                {/* ==================================================
+                    JOURNEY IMAGE
+                ================================================== */}
 
-  <Box
-    sx={{
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "space-between",
-      position: "relative",
-      zIndex: 2,
-    }}
-  >
-    {/* Animated Icon */}
+                <Box
+                  sx={{
+                    position: "relative",
+                    height: {
+                      xs: 115,
+                      sm: 105,
+                      lg: 110,
+                    },
+                    overflow: "hidden",
+                    zIndex: 2,
+                  }}
+                >
+                  <Box
+                    className="journey-image"
+                    sx={{
+                      position: "absolute",
+                      inset: 0,
 
-    <Box
-      className="journey-icon"
-      sx={{
-        width: 46,
-        height: 46,
-        borderRadius: "13px",
-        display: "grid",
-        placeItems: "center",
+                      backgroundImage: `url(${item.image})`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
 
-        background:
-          index === 3
-            ? "linear-gradient(135deg, rgba(37,99,235,0.12), rgba(37,99,235,0.05))"
-            : "linear-gradient(135deg, rgba(5,150,105,0.12), rgba(5,150,105,0.05))",
+                      transform: "scale(1)",
+                      transition:
+                        "transform 0.7s cubic-bezier(.2,.8,.2,1)",
+                    }}
+                  />
 
-        color:
-          index === 3
-            ? "#2563EB"
-            : "#059669",
+                  {/* Image Overlay */}
 
-        transition:
-          "all 0.4s cubic-bezier(.2,.8,.2,1)",
+                  <Box
+                    className="journey-image-overlay"
+                    sx={{
+                      position: "absolute",
+                      inset: 0,
+                      background:
+                        "linear-gradient(135deg, rgba(4,78,66,0.42), rgba(37,99,235,0.35))",
+                      opacity: 0,
+                      transition:
+                        "opacity 0.4s ease",
+                    }}
+                  />
 
-        animation:
-          `iconBreath 3s ease-in-out ${index * 0.3}s infinite`,
+                  {/* Image Label */}
 
-        "@keyframes iconBreath": {
-          "0%, 100%": {
-            boxShadow:
-              "0 0 0 rgba(5,150,105,0)",
-          },
-          "50%": {
-            boxShadow:
-              "0 0 18px rgba(5,150,105,0.10)",
-          },
-        },
-      }}
-    >
-      {item.icon}
-    </Box>
+                  <Box
+                    sx={{
+                      position: "absolute",
+                      left: 15,
+                      bottom: 12,
+                      px: 1.2,
+                      py: 0.5,
+                      borderRadius: "50px",
+                      background:
+                        "rgba(255,255,255,0.88)",
+                      backdropFilter: "blur(8px)",
+                      zIndex: 2,
+                    }}
+                  >
+                    <Typography
+                      sx={{
+                        fontSize: 9,
+                        fontWeight: 800,
+                        color:
+                          index === 3
+                            ? "#1D4ED8"
+                            : "#047857",
+                        letterSpacing: 0.8,
+                      }}
+                    >
+                      {item.title.toUpperCase()}
+                    </Typography>
+                  </Box>
+                </Box>
 
-    {/* Number */}
+                {/* ==================================================
+                    CARD CONTENT
+                ================================================== */}
 
-    <Typography
-      className="journey-number"
-      sx={{
-        fontSize: 30,
-        fontWeight: 850,
-        color:
-          "rgba(15,118,110,0.09)",
-        transition:
-          "all 0.4s ease",
-      }}
-    >
-      {item.number}
-    </Typography>
-  </Box>
+                <Box
+                  sx={{
+                    p: {
+                      xs: 2.5,
+                      md: 3,
+                    },
+                    position: "relative",
+                    zIndex: 2,
+                  }}
+                >
+                  {/* Card Header */}
 
-  {/* Title */}
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    {/* Icon */}
 
-  <Typography
-    className="journey-title"
-    sx={{
-      mt: 3,
-      fontSize: 19,
-      fontWeight: 800,
-      color: "#12302B",
-      position: "relative",
-      zIndex: 2,
-      transition:
-        "color 0.3s ease",
-    }}
-  >
-    {item.title}
-  </Typography>
+                    <Box
+                      className="journey-icon"
+                      sx={{
+                        width: 46,
+                        height: 46,
+                        borderRadius: "13px",
+                        display: "grid",
+                        placeItems: "center",
 
-  {/* Description */}
+                        background:
+                          index === 3
+                            ? "linear-gradient(135deg, rgba(37,99,235,0.12), rgba(37,99,235,0.05))"
+                            : "linear-gradient(135deg, rgba(5,150,105,0.12), rgba(5,150,105,0.05))",
 
-  <Typography
-    sx={{
-      mt: 1,
-      fontSize: 12,
-      lineHeight: 1.7,
-      color: "#708780",
-      position: "relative",
-      zIndex: 2,
-    }}
-  >
-    {item.text}
-  </Typography>
+                        color:
+                          index === 3
+                            ? "#2563EB"
+                            : "#059669",
 
-  {/* Small bottom indicator */}
+                        transition:
+                          "all 0.4s cubic-bezier(.2,.8,.2,1)",
 
-  <Box
-    sx={{
-      position: "absolute",
-      bottom: 18,
-      left: 24,
-      width: 25,
-      height: 3,
-      borderRadius: 10,
-      background:
-        index === 3
-          ? "#2563EB"
-          : "#059669",
-      opacity: 0.18,
-      transition:
-        "all 0.4s ease",
+                        animation:
+                          `iconBreath 3s ease-in-out ${
+                            index * 0.3
+                          }s infinite`,
 
-      ".MuiBox-root:hover &": {
-        width: 55,
-        opacity: 0.65,
-      },
-    }}
-  />
+                        "@keyframes iconBreath": {
+                          "0%, 100%": {
+                            boxShadow:
+                              "0 0 0 rgba(5,150,105,0)",
+                          },
+                          "50%": {
+                            boxShadow:
+                              "0 0 18px rgba(5,150,105,0.10)",
+                          },
+                        },
+                      }}
+                    >
+                      {item.icon}
+                    </Box>
 
-  {/* Arrow */}
+                    {/* Number */}
 
-  {index !== journey.length - 1 && (
-    <ArrowForwardRoundedIcon
-      sx={{
-        display: {
-          xs: "none",
-          lg: "block",
-        },
-        position: "absolute",
-        right: -19,
-        top: "50%",
-        transform:
-          "translateY(-50%)",
-        zIndex: 5,
-        fontSize: 25,
-        color: "#8CBDB0",
+                    <Typography
+                      className="journey-number"
+                      sx={{
+                        fontSize: 30,
+                        fontWeight: 850,
+                        color:
+                          "rgba(15,118,110,0.09)",
+                        transition:
+                          "all 0.4s ease",
+                      }}
+                    >
+                      {item.number}
+                    </Typography>
+                  </Box>
 
-        animation:
-          "arrowPulse 2s ease-in-out infinite",
+                  {/* Title */}
 
-        "@keyframes arrowPulse": {
-          "0%, 100%": {
-            opacity: 0.35,
-            transform:
-              "translateY(-50%) translateX(0)",
-          },
-          "50%": {
-            opacity: 1,
-            transform:
-              "translateY(-50%) translateX(5px)",
-          },
-        },
-      }}
-    />
-            )}
-           </Box>
+                  <Typography
+                    className="journey-title"
+                    sx={{
+                      mt: 2.2,
+                      fontSize: 19,
+                      fontWeight: 800,
+                      color: "#12302B",
+                      transition:
+                        "color 0.3s ease",
+                    }}
+                  >
+                    {item.title}
+                  </Typography>
+
+                  {/* Description */}
+
+                  <Typography
+                    sx={{
+                      mt: 1,
+                      fontSize: 12,
+                      lineHeight: 1.7,
+                      color: "#708780",
+                    }}
+                  >
+                    {item.text}
+                  </Typography>
+                </Box>
+
+                {/* Bottom Indicator */}
+
+                <Box
+                  sx={{
+                    position: "absolute",
+                    bottom: 18,
+                    left: 24,
+                    width: 25,
+                    height: 3,
+                    borderRadius: 10,
+                    background:
+                      index === 3
+                        ? "#2563EB"
+                        : "#059669",
+                    opacity: 0.18,
+                    transition:
+                      "all 0.4s ease",
+                  }}
+                />
+
+                {/* Arrow */}
+
+                {index !== journey.length - 1 && (
+                  <ArrowForwardRoundedIcon
+                    sx={{
+                      display: {
+                        xs: "none",
+                        lg: "block",
+                      },
+                      position: "absolute",
+                      right: -19,
+                      top: "50%",
+                      transform:
+                        "translateY(-50%)",
+                      zIndex: 5,
+                      fontSize: 25,
+                      color: "#8CBDB0",
+
+                      animation:
+                        "arrowPulse 2s ease-in-out infinite",
+
+                      "@keyframes arrowPulse": {
+                        "0%, 100%": {
+                          opacity: 0.35,
+                          transform:
+                            "translateY(-50%) translateX(0)",
+                        },
+                        "50%": {
+                          opacity: 1,
+                          transform:
+                            "translateY(-50%) translateX(5px)",
+                        },
+                      },
+                    }}
+                  />
+                )}
+              </Box>
             ))}
           </Box>
         </Box>
