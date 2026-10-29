@@ -1,9 +1,17 @@
+import { useEffect, useState } from "react";
 import {
   Box,
   Container,
   Typography,
   Chip,
   Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  IconButton,
+  Divider,
+  Stack,
 } from "@mui/material";
 
 import CodeRoundedIcon from "@mui/icons-material/CodeRounded";
@@ -13,6 +21,9 @@ import DesignServicesRoundedIcon from "@mui/icons-material/DesignServicesRounded
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import AccessTimeRoundedIcon from "@mui/icons-material/AccessTimeRounded";
 import TrendingUpRoundedIcon from "@mui/icons-material/TrendingUpRounded";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import MenuBookRoundedIcon from "@mui/icons-material/MenuBookRounded";
+import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 
 // Course images
 import courseFullstack from "../assets/course-fullstack.jpg";
@@ -21,56 +32,66 @@ import courseBackend from "../assets/course-backend.png";
 import courseUiux from "../assets/course-uiux.webp";
 
 const Courses = () => {
-  const courses = [
-    {
-      number: "01",
-      title: "Full Stack Development",
-      description:
-        "Build complete modern web applications from frontend interfaces to powerful backend systems.",
-      level: "Advanced",
-      duration: "6 Months",
-      color: "#059669",
-      icon: <CodeRoundedIcon />,
-      image: courseFullstack,
-      technologies: ["React", "Node.js", "MongoDB"],
-    },
-    {
-      number: "02",
-      title: "Frontend Development",
-      description:
-        "Create responsive, interactive and user-friendly web experiences using modern frontend technologies.",
-      level: "Intermediate",
-      duration: "4 Months",
-      color: "#2563EB",
-      icon: <WebRoundedIcon />,
-      image: courseFrontend,
-      technologies: ["HTML", "CSS", "React"],
-    },
-    {
-      number: "03",
-      title: "Backend Development",
-      description:
-        "Learn to design APIs, manage databases and build secure scalable server-side applications.",
-      level: "Intermediate",
-      duration: "4 Months",
-      color: "#0F766E",
-      icon: <StorageRoundedIcon />,
-      image: courseBackend,
-      technologies: ["Node.js", "Express", "MongoDB"],
-    },
-    {
-      number: "04",
-      title: "UI / UX Design",
-      description:
-        "Transform ideas into intuitive digital experiences through research, design systems and prototyping.",
-      level: "Beginner",
-      duration: "3 Months",
-      color: "#7C3AED",
-      icon: <DesignServicesRoundedIcon />,
-      image: courseUiux,
-      technologies: ["Figma", "UX", "Prototyping"],
-    },
-  ];
+  const [selectedCourse, setSelectedCourse] = useState(null);
+  const [courses, setCourses] = useState([]);
+  const [loadingCourses, setLoadingCourses] = useState(true);
+  const [coursesError, setCoursesError] = useState("");
+
+  // Keep the existing local images so the cards and details dialog display correctly.
+  const courseImages = {
+    "Full Stack Development": courseFullstack,
+    "Frontend Development": courseFrontend,
+    "Backend Development": courseBackend,
+    "UI / UX Design": courseUiux,
+  };
+
+  const courseIcons = {
+    "Full Stack Development": <CodeRoundedIcon />,
+    "Frontend Development": <WebRoundedIcon />,
+    "Backend Development": <StorageRoundedIcon />,
+    "UI / UX Design": <DesignServicesRoundedIcon />,
+  };
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        setLoadingCourses(true);
+        setCoursesError("");
+
+        const response = await fetch("http://localhost:5000/api/courses");
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+          throw new Error(result.message || "Failed to load courses.");
+        }
+
+        const formattedCourses = (Array.isArray(result.data) ? result.data : []).map(
+          (course) => ({
+            ...course,
+            // Database image paths are not imported by Vite; use the existing assets.
+            image: courseImages[course.title] || courseFullstack,
+            icon: courseIcons[course.title] || <CodeRoundedIcon />,
+            technologies: Array.isArray(course.technologies) ? course.technologies : [],
+            syllabus: Array.isArray(course.syllabus) ? course.syllabus : [],
+            outcomes: Array.isArray(course.outcomes) ? course.outcomes : [],
+            project: course.project || "",
+            prerequisites: course.prerequisites || "",
+          })
+        );
+
+        setCourses(formattedCourses);
+      } catch (error) {
+        console.error("Courses fetch error:", error);
+        setCoursesError(
+          "Unable to load courses. Please check that the backend server is running and try again."
+        );
+      } finally {
+        setLoadingCourses(false);
+      }
+    };
+
+    fetchCourses();
+  }, []);
 
   return (
     <Box
@@ -319,7 +340,46 @@ const Courses = () => {
             alignItems: "stretch",
           }}
         >
-          {courses.map((course, index) => (
+          {loadingCourses ? (
+            <Typography
+              sx={{
+                gridColumn: "1 / -1",
+                textAlign: "center",
+                py: 5,
+                color: "#60756F",
+                fontWeight: 600,
+              }}
+            >
+              Loading courses...
+            </Typography>
+          ) : coursesError ? (
+            <Typography
+              role="alert"
+              sx={{
+                gridColumn: "1 / -1",
+                textAlign: "center",
+                py: 5,
+                px: 2,
+                color: "#B91C1C",
+                fontWeight: 600,
+              }}
+            >
+              {coursesError}
+            </Typography>
+          ) : courses.length === 0 ? (
+            <Typography
+              sx={{
+                gridColumn: "1 / -1",
+                textAlign: "center",
+                py: 5,
+                color: "#60756F",
+                fontWeight: 600,
+              }}
+            >
+              No courses are available right now.
+            </Typography>
+          ) : (
+            courses.map((course, index) => (
             <Box
               key={course.title}
               sx={{
@@ -657,7 +717,7 @@ const Courses = () => {
 
                 {/* View Course */}
                 <Button
-                  href="#contact"
+                  onClick={() => setSelectedCourse(course)}
                   fullWidth
                   variant="outlined"
                   endIcon={
@@ -714,8 +774,232 @@ const Courses = () => {
                 }}
               />
             </Box>
-          ))}
+            ))
+          )}
         </Box>
+
+        {/* =========================
+            COURSE DETAILS DIALOG
+        ========================== */}
+        <Dialog
+          open={Boolean(selectedCourse)}
+          onClose={() => setSelectedCourse(null)}
+          fullWidth
+          maxWidth="md"
+          scroll="paper"
+          PaperProps={{
+            sx: {
+              borderRadius: { xs: 3, sm: 4 },
+              overflow: "hidden",
+              background: "#FBFFFD",
+            },
+          }}
+        >
+          {selectedCourse && (
+            <>
+              <Box
+                sx={{
+                  position: "relative",
+                  minHeight: { xs: 165, sm: 220 },
+                  display: "flex",
+                  alignItems: "flex-end",
+                  p: { xs: 2.5, sm: 4 },
+                  color: "#fff",
+                  backgroundImage: `linear-gradient(115deg, ${selectedCourse.color}E8, rgba(18,48,43,0.72)), url(${selectedCourse.image})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              >
+                <IconButton
+                  onClick={() => setSelectedCourse(null)}
+                  aria-label="Close course details"
+                  sx={{
+                    position: "absolute",
+                    right: 12,
+                    top: 12,
+                    color: "#12302B",
+                    background: "rgba(255,255,255,0.92)",
+                    "&:hover": { background: "#fff" },
+                  }}
+                >
+                  <CloseRoundedIcon />
+                </IconButton>
+                <Box sx={{ pr: 4 }}>
+                  <Chip
+                    label={selectedCourse.level}
+                    size="small"
+                    sx={{
+                      mb: 1.2,
+                      color: selectedCourse.color,
+                      background: "#fff",
+                      fontWeight: 800,
+                    }}
+                  />
+                  <Typography
+                    component="h2"
+                    sx={{
+                      fontSize: { xs: 24, sm: 34 },
+                      lineHeight: 1.15,
+                      fontWeight: 900,
+                    }}
+                  >
+                    {selectedCourse.title}
+                  </Typography>
+                  <Stack direction="row" spacing={1} alignItems="center" sx={{ mt: 1 }}>
+                    <AccessTimeRoundedIcon sx={{ fontSize: 18 }} />
+                    <Typography sx={{ fontSize: 14, fontWeight: 700 }}>
+                      {selectedCourse.duration}
+                    </Typography>
+                  </Stack>
+                </Box>
+              </Box>
+
+              <DialogTitle sx={{ px: { xs: 2.5, sm: 4 }, pt: 3, pb: 1, fontWeight: 850, color: "#12302B" }}>
+                About this course
+              </DialogTitle>
+              <DialogContent sx={{ px: { xs: 2.5, sm: 4 }, pb: 2 }}>
+                <Typography sx={{ color: "#60756F", lineHeight: 1.8, mb: 3 }}>
+                  {selectedCourse.description}
+                </Typography>
+
+                <Divider sx={{ mb: 2.5 }} />
+                <Stack direction="row" spacing={1} alignItems="center" sx={{ mb: 1.5 }}>
+                  <MenuBookRoundedIcon sx={{ color: selectedCourse.color }} />
+                  <Typography sx={{ fontSize: 18, fontWeight: 850, color: "#12302B" }}>
+                    What you’ll learn
+                  </Typography>
+                </Stack>
+                <Box
+                  sx={{
+                    display: "grid",
+                    gridTemplateColumns: { xs: "1fr", sm: "repeat(2, minmax(0, 1fr))" },
+                    gap: 1.3,
+                    mb: 3,
+                  }}
+                >
+                  {selectedCourse.outcomes.map((item) => (
+                    <Stack key={item} direction="row" spacing={1} alignItems="flex-start">
+                      <CheckCircleRoundedIcon sx={{ color: selectedCourse.color, fontSize: 19, mt: 0.2 }} />
+                      <Typography sx={{ color: "#526C65", fontSize: 13, lineHeight: 1.65 }}>
+                        {item}
+                      </Typography>
+                    </Stack>
+                  ))}
+                </Box>
+
+                <Divider sx={{ mb: 2.5 }} />
+                <Typography sx={{ fontSize: 18, fontWeight: 850, color: "#12302B", mb: 1.5 }}>
+                  Course syllabus
+                </Typography>
+                <Stack spacing={1.2} sx={{ mb: 3 }}>
+                  {selectedCourse.syllabus.map((item, index) => (
+                    <Box
+                      key={item}
+                      sx={{
+                        display: "flex",
+                        alignItems: "flex-start",
+                        gap: 1.5,
+                        p: 1.4,
+                        borderRadius: 2,
+                        background: `${selectedCourse.color}08`,
+                        border: `1px solid ${selectedCourse.color}18`,
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          flexShrink: 0,
+                          width: 27,
+                          height: 27,
+                          borderRadius: "9px",
+                          display: "grid",
+                          placeItems: "center",
+                          background: `${selectedCourse.color}18`,
+                          color: selectedCourse.color,
+                          fontSize: 11,
+                          fontWeight: 900,
+                        }}
+                      >
+                        {String(index + 1).padStart(2, "0")}
+                      </Box>
+                      <Typography sx={{ color: "#526C65", fontSize: 13, lineHeight: 1.7, pt: 0.3 }}>
+                        {item}
+                      </Typography>
+                    </Box>
+                  ))}
+                </Stack>
+
+                <Typography sx={{ fontSize: 16, fontWeight: 850, color: "#12302B", mb: 1 }}>
+                  Technologies covered
+                </Typography>
+                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, mb: 3 }}>
+                  {selectedCourse.technologies.map((technology) => (
+                    <Chip
+                      key={technology}
+                      label={technology}
+                      size="small"
+                      sx={{ background: `${selectedCourse.color}12`, color: selectedCourse.color, fontWeight: 750 }}
+                    />
+                  ))}
+                </Box>
+
+                <Box sx={{ p: 2, borderRadius: 2.5, background: "#F0F8F5", mb: 1.5 }}>
+                  <Typography sx={{ fontWeight: 800, color: "#12302B", mb: 0.5 }}>
+                    Practical project
+                  </Typography>
+                  <Typography sx={{ color: "#60756F", fontSize: 13, lineHeight: 1.7 }}>
+                    {selectedCourse.project}
+                  </Typography>
+                </Box>
+                <Typography sx={{ color: "#71847E", fontSize: 12, lineHeight: 1.7 }}>
+                  <strong>Prerequisites:</strong> {selectedCourse.prerequisites}
+                </Typography>
+              </DialogContent>
+              <DialogActions sx={{ px: { xs: 2.5, sm: 4 }, pb: 3, pt: 1 }}>
+                <Button
+                  onClick={() => setSelectedCourse(null)}
+                  sx={{ color: "#526C65", textTransform: "none", fontWeight: 750 }}
+                >
+                  Close
+                </Button>
+                <Button
+  href="#contact"
+  onClick={() => {
+    const courseSlug = {
+      "Full Stack Development": "full-stack",
+      "Frontend Development": "frontend",
+      "Backend Development": "backend",
+      "UI / UX Design": "uiux",
+    }[selectedCourse.title] || "other";
+
+    window.dispatchEvent(
+      new CustomEvent("select-course-for-enquiry", {
+        detail: courseSlug,
+      })
+    );
+
+    setSelectedCourse(null);
+
+    document.getElementById("contact")?.scrollIntoView({
+      behavior: "smooth",
+    });
+  }}
+  variant="contained"
+  endIcon={<ArrowForwardRoundedIcon />}
+  sx={{
+    px: 2.5,
+    py: 1.1,
+    borderRadius: 2.5,
+    textTransform: "none",
+    fontWeight: 800,
+    background: `linear-gradient(135deg, ${selectedCourse.color}, #2563EB)`,
+  }}
+>
+  Enquire About Course
+</Button>
+              </DialogActions>
+            </>
+          )}
+        </Dialog>
 
         {/* =========================
             BOTTOM CTA

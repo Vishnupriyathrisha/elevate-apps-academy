@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 import {
   Box,
   Container,
@@ -15,6 +17,84 @@ import ArrowOutwardOutlinedIcon from "@mui/icons-material/ArrowOutwardOutlined";
 import CheckCircleOutlineOutlinedIcon from "@mui/icons-material/CheckCircleOutlineOutlined";
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    course: "",
+    message: "",
+  });
+  const [submitting, setSubmitting] = useState(false);
+  const [feedback, setFeedback] = useState({ type: "", message: "" });
+
+  // Receive the selected course from the Courses section.
+  useEffect(() => {
+    const handleCourseSelection = (event) => {
+      const course = event.detail;
+      if (!course) return;
+
+      const courseLabels = {
+        "full-stack": "Full Stack Development",
+        frontend: "Frontend Development",
+        backend: "Backend Development",
+        uiux: "UI / UX Design",
+        other: "Other",
+      };
+
+      setFormData((previous) => ({
+        ...previous,
+        course,
+        message: previous.message || `I would like to know more about the ${courseLabels[course] || "course"} course.`,
+      }));
+      setFeedback({ type: "", message: "" });
+    };
+
+    window.addEventListener("select-course-for-enquiry", handleCourseSelection);
+    return () => {
+      window.removeEventListener("select-course-for-enquiry", handleCourseSelection);
+    };
+  }, []);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((previous) => ({ ...previous, [name]: value }));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setSubmitting(true);
+    setFeedback({ type: "", message: "" });
+
+    try {
+      const response = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || "Unable to submit your enquiry.");
+      }
+
+      setFeedback({
+        type: "success",
+        message: result.message || "Your enquiry has been submitted successfully!",
+      });
+      setFormData({ name: "", email: "", phone: "", course: "", message: "" });
+    } catch (error) {
+      setFeedback({
+        type: "error",
+        message:
+          error.message === "Failed to fetch"
+            ? "Cannot connect to the server. Please check that the backend is running and try again."
+            : error.message || "Something went wrong. Please try again.",
+      });
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   const infoCards = [
     {
       icon: <LocationOnOutlinedIcon />,
@@ -460,7 +540,7 @@ const Contact = () => {
               </Typography>
             </Box>
 
-            <Stack spacing={2}>
+            <Stack component="form" spacing={2} onSubmit={handleSubmit}>
               {/* Name + Email */}
 
               <Box
@@ -476,6 +556,10 @@ const Contact = () => {
                 <TextField
                   fullWidth
                   label="Your Name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
                   placeholder="Enter your name"
                   variant="outlined"
                   size="small"
@@ -502,6 +586,11 @@ const Contact = () => {
                 <TextField
                   fullWidth
                   label="Email Address"
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
                   placeholder="you@example.com"
                   variant="outlined"
                   size="small"
@@ -531,6 +620,11 @@ const Contact = () => {
               <TextField
                 fullWidth
                 label="Phone Number"
+                name="phone"
+                type="tel"
+                value={formData.phone}
+                onChange={handleChange}
+                required
                 placeholder="Enter your phone number"
                 variant="outlined"
                 size="small"
@@ -560,7 +654,10 @@ const Contact = () => {
                 select
                 fullWidth
                 label="Interested Course"
-                defaultValue=""
+                name="course"
+                value={formData.course}
+                onChange={handleChange}
+                required
                 size="small"
                 sx={{
                   "& .MuiOutlinedInput-root": {
@@ -596,6 +693,10 @@ const Contact = () => {
                 multiline
                 minRows={4}
                 label="Your Message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                required
                 placeholder="Tell us how we can help..."
                 variant="outlined"
                 sx={{
@@ -618,12 +719,35 @@ const Contact = () => {
                 }}
               />
 
+              {/* Submission feedback */}
+              {feedback.message && (
+                <Typography
+                  role="status"
+                  aria-live="polite"
+                  sx={{
+                    color: feedback.type === "success" ? "#047857" : "#B91C1C",
+                    background:
+                      feedback.type === "success"
+                        ? "rgba(5,150,105,0.08)"
+                        : "rgba(220,38,38,0.07)",
+                    borderRadius: "12px",
+                    p: 1.5,
+                    fontSize: 13,
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {feedback.message}
+                </Typography>
+              )}
+
               {/* Button */}
 
               <Button
+                type="submit"
                 fullWidth
                 variant="contained"
-                endIcon={<ArrowOutwardOutlinedIcon />}
+                disabled={submitting}
+                endIcon={!submitting ? <ArrowOutwardOutlinedIcon /> : null}
                 sx={{
                   mt: 0.5,
                   py: { xs: 1.3, sm: 1.5 },
@@ -644,7 +768,7 @@ const Contact = () => {
                   },
                 }}
               >
-                Send Enquiry
+                {submitting ? "Sending..." : "Send Enquiry"}
               </Button>
             </Stack>
           </Box>

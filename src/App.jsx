@@ -1,3 +1,5 @@
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 
 import WelcomeScreen from "./components/WelcomeScreen";
@@ -12,13 +14,17 @@ import Events from "./components/Events";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
-function App() {
+import AdminLogin from "./components/AdminLogin";
+import AdminEnquiries from "./components/AdminEnquiries";
+import ProtectedRoute from "./components/ProtectedRoute";
+import AdminCourses from "./pages/AdminCourses";
+import AdminDashboard from "./pages/AdminDashboard";
+
+function HomePage() {
   return (
     <div className="app">
       <WelcomeScreen />
-
       <Navbar />
-
       <main>
         <Hero />
         <About />
@@ -29,10 +35,33 @@ function App() {
         <Events />
         <Contact />
       </main>
-
       <Footer />
     </div>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/admin/login" element={<AdminLogin />} />
+
+        <Route element={<ProtectedRoute />}>
+           <Route
+           path="/admin/dashboard"
+           element={<AdminDashboard />}
+           />
+          <Route
+            path="/admin/enquiries"
+            element={<AdminEnquiries />}
+          />
+          <Route
+  path="/admin/courses"
+  element={<AdminCourses />}
+/>
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
